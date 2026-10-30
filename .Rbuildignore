@@ -6,3 +6,12 @@
 ^analysis$
 ^CLAUDE\.md$
 ^LICENSE\.md$
+^pkgdown$
+^README\.Rmd$
+^_pkgdown\.yml$
+^docs$
+^vignettes/articles$
+^_brand\.yml$
+^logos$
+^CITATION\.cff$
+^\.zenodo\.json$

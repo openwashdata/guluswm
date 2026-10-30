@@ -1,0 +1,31 @@
+{
+  "title": "Household Waste Survey and Characterisation in Gulu City, Uganda",
+  "description": "Field data of a household solid waste study in Gulu City, northern Uganda, in September and October 2026: a socio-economic household survey of 424 households in six areas of the two city divisions, covering housing, income and expenditure bands, waste storage and disposal, the collection service, payment for collection and willingness to pay for an improved service, and a seven day waste characterisation of 95 households with the weights of 16 sorted fractions, the per capita generation rate and the bulk density. The data were collected by Ivan Feni and colleagues of Makerere University and Gulu City Council for a manuscript in preparation (Feni, Batte, Omal and Niwagaba, 2026).",
+  "upload_type": "dataset",
+  "creators": [
+    {
+      "name": "Feni, Ivan"
+    },
+    {
+      "name": "Batte, Abubakar"
+    },
+    {
+      "name": "Omal, James"
+    },
+    {
+      "name": "Niwagaba, Charles B."
+    },
+    {
+      "name": "Schöbitz, Lars",
+      "orcid": "0000-0003-2196-5015"
+    }
+  ],
+  "license": "cc-by-4.0",
+  "keywords": ["open data", "washdata", "solid waste management", "household survey", "waste characterisation", "willingness to pay", "Gulu", "Uganda"],
+  "version": "0.0.0.9000",
+  "communities": [
+    {
+      "identifier": "openwashdata"
+    }
+  ]
+}
