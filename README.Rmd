@@ -1,0 +1,241 @@
+---
+output: github_document
+always_allow_html: true
+editor_options: 
+  markdown: 
+    wrap: 72
+  chunk_output_type: console
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%",
+  message = FALSE,
+  warning = FALSE,
+  fig.retina = 2,
+  fig.align = 'center'
+)
+```
+
+# guluswm
+
+<!-- badges: start -->
+
+[![License: CC BY
+4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+[![R-CMD-check](https://github.com/openwashdata/guluswm/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/openwashdata/guluswm/actions/workflows/R-CMD-check.yaml)
+
+<!-- badges: end -->
+
+The goal of guluswm is to provide the field data of a household solid
+waste study in Gulu City, northern Uganda, as tidy data. The study
+combined a socio-economic household survey of 424 households in six areas
+of the city's two divisions, conducted face to face with the mWater
+platform from 23 to 26 September 2026, with a seven day waste
+characterisation study in which the waste of 95 households was weighed and
+sorted into 16 fractions on 1 to 3 October 2026. The data were collected
+by Ivan Feni, Abubakar Batte, James Omal and Charles B. Niwagaba of
+Makerere University, the University of Stuttgart and Gulu City Council for
+a manuscript in preparation, and shared with openwashdata for publication
+under the CC BY 4.0 licence.
+
+**Draft.** This package is not released and has no DOI. The authors are
+reviewing the package and answering the questions tracked in the
+repository's issues; the data may still change.
+
+## Installation
+
+You can install the development version of guluswm from
+[GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("openwashdata/guluswm")
+```
+
+```{r}
+## Run the following code in console if you don't have the packages
+## install.packages(c("dplyr", "knitr", "readr", "stringr", "gt", "kableExtra"))
+library(dplyr)
+library(knitr)
+library(readr)
+library(stringr)
+library(gt)
+library(kableExtra)
+```
+
+Alternatively, you can download the individual datasets as a CSV or XLSX
+file from the table below.
+
+1.  Click Download CSV. A window opens that displays the CSV in
+    your browser.
+2.  Right-click anywhere inside the window and select "Save Page As...".
+3.  Save the file in a folder of your choice.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
+extdata_path <- "https://github.com/openwashdata/guluswm/raw/main/inst/extdata/"
+
+read_csv("data-raw/dictionary.csv") |> 
+  distinct(file_name) |> 
+  dplyr::mutate(file_name = str_remove(file_name, ".rda")) |> 
+  dplyr::rename(dataset = file_name) |> 
+  mutate(
+    CSV = paste0("[Download CSV](", extdata_path, dataset, ".csv)"),
+    XLSX = paste0("[Download XLSX](", extdata_path, dataset, ".xlsx)")
+  ) |> 
+  knitr::kable()
+
+```
+
+## Data
+
+The package provides access to two data objects. `guluswm_survey` holds
+one row per household interviewed in the household survey, and
+`guluswm_waste` one row per household in the waste characterisation
+study. The two studies were run by separate field teams in the same six
+areas, and their households cannot be linked.
+
+```{r}
+library(guluswm)
+```
+
+### guluswm_survey
+
+The dataset `guluswm_survey` contains data about the interviewed
+households: household size, the education and livelihood of the household
+head, income and expenditure bands, housing and utilities, the types of
+waste generated, how waste is stored and disposed of, who collects it, how
+the collection service is rated, whether the household pays for
+collection and how much, whether it is willing to pay for an improved
+service and at what amount, and its awareness of by-laws. It has
+`r nrow(guluswm_survey)` observations and `r ncol(guluswm_survey)`
+variables
+
+```{r}
+guluswm_survey |> 
+  head(3) |> 
+  gt::gt() |>
+  gt::as_raw_html()
+```
+
+For an overview of the variable names, see the following table.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+readr::read_csv("data-raw/dictionary.csv") |>
+  dplyr::filter(file_name == "guluswm_survey.rda") |>
+  dplyr::select(variable_name:description) |> 
+  knitr::kable() |> 
+  kableExtra::kable_styling("striped") |> 
+  kableExtra::scroll_box(height = "200px")
+```
+
+### guluswm_waste
+
+The dataset `guluswm_waste` contains data about the waste each household
+stored over seven consecutive days: the number of occupants, the total
+weight as recorded and as used in the analysis, the per capita generation
+rate, the bulk density measured with a 10 litre bucket, and the weight of
+each of the 16 sorted fractions before and after the deduction of the
+container weight. It has `r nrow(guluswm_waste)` observations and
+`r ncol(guluswm_waste)` variables
+
+```{r}
+guluswm_waste |> 
+  head(3) |> 
+  gt::gt() |>
+  gt::as_raw_html()
+```
+
+For an overview of the variable names, see the following table.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+readr::read_csv("data-raw/dictionary.csv") |>
+  dplyr::filter(file_name == "guluswm_waste.rda") |>
+  dplyr::select(variable_name:description) |> 
+  knitr::kable() |> 
+  kableExtra::kable_styling("striped") |> 
+  kableExtra::scroll_box(height = "200px")
+```
+
+## Example
+
+The figure `generation-by-area` shows the per capita waste generation
+rate of the 94 households included in the study's averages, one point per
+household, grouped by study area and ordered by the median of the area.
+Generation differs between areas more than between the two divisions, and
+in every area a few households generate far more than the rest.
+
+```{r generation-by-area, fig.alt="Dot plot of the per capita waste generation rate in kilograms per person and day for 94 households, one row per study area ordered by median, with the median of each area marked"}
+library(guluswm)
+library(dplyr)
+library(ggplot2)
+
+analysed <- guluswm_waste |>
+  filter(included_in_averages == "Yes") |>
+  mutate(area = reorder(area, generation_kg_cap_day, FUN = median))
+
+medians <- analysed |>
+  group_by(area, division) |>
+  summarise(median = median(generation_kg_cap_day), n = n(), .groups = "drop")
+
+ggplot(analysed, aes(x = generation_kg_cap_day, y = area)) +
+  geom_jitter(aes(colour = division), height = 0.15, alpha = 0.7, size = 2) +
+  geom_point(data = medians, aes(x = median), shape = 124, size = 8) +
+  geom_text(data = medians, aes(x = 1.45, label = paste0("n = ", n)),
+            hjust = 0, size = 3.2) +
+  scale_x_continuous(limits = c(0, 1.6), breaks = seq(0, 1.5, 0.25)) +
+  scale_colour_manual(values = c(`Bardege-Layibi` = "#B5473B",
+                                 `Laroo-Pece` = "#5B8E7D")) +
+  labs(x = "Waste generation (kg per person and day)", y = NULL,
+       colour = "Division",
+       title = "Household waste generation by study area, Gulu City, 2026",
+       subtitle = "One point per household; the bar marks the median of the area") +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+```
+
+## Source and changes
+
+The data come from the field data workbook of the Gulu City household
+solid waste study, shared by its authors with openwashdata in October
+2026. The study is described in Feni, I., Batte, A., Omal, J. and
+Niwagaba, C. B., *Household waste generation, composition and willingness
+to pay for collection in Gulu City, Uganda: implications for user charges
+in secondary cities* (manuscript in preparation). The household survey
+was administered in English or Acholi by five trained enumerators after
+verbal consent; the waste characterisation followed the sorting
+categories of ASTM D5231, with polyethylene bags and inert fines (sand,
+soil and stones from compound sweeping) recorded as separate fractions.
+
+We changed the material. The two sheets of the workbook were read into R
+(the script is in `data-raw/data_processing.R`), the column names were
+rewritten in snake case with the unit in the name where there is one, the
+ordered categories became factors in the order of the questionnaire, and
+the survey sheet's spelling "Pabwo Quarters" was aligned with "Pabbo
+Quarters" as used in the characterisation sheet and the manuscript.
+Multi-answer questions stay as one string with the answers separated by a
+semicolon, as in the workbook. Three groups of columns are not included
+in this version of the package: the household coordinates of both sheets,
+the identifiers that carry an enumerator's name (the enumerator is kept
+as a code E1 to E5), and the three free text answers of the survey, whose
+coded versions are included. The script `analysis/validate_data.R`
+recomputes the figures of the manuscript from the data objects.
+
+## License
+
+Data are available as
+[CC-BY](https://github.com/openwashdata/guluswm/blob/main/LICENSE.md).
+
+## Citation
+
+Please cite this package using:
+
+```{r}
+citation("guluswm")
+```
