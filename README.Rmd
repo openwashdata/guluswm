@@ -177,6 +177,7 @@ library(guluswm)
 library(dplyr)
 library(ggplot2)
 
+set.seed(2026)
 analysed <- guluswm_waste |>
   filter(included_in_averages == "Yes") |>
   mutate(area = reorder(area, generation_kg_cap_day, FUN = median))
