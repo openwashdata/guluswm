@@ -1,0 +1,8 @@
+.Rproj.user
+docs
+# The original field data workbook holds household coordinates and the
+# enumerators' user names. It stays out of git until the authors and the
+# maintainer have decided what may be published (see the PII issue).
+data-raw/Gulu_SWM_Complete_Field_data.xlsx
+# Unpublished manuscript and supplement, kept locally for reference only.
+dev/source/
