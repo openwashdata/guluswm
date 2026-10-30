@@ -23,9 +23,10 @@ Niwagaba of Makerere University, the University of Stuttgart and Gulu
 City Council for a manuscript in preparation, and shared with
 openwashdata for publication under the CC BY 4.0 licence.
 
-**Draft.** This package is not released and has no DOI. The authors are
-reviewing the package and answering the questions tracked in the
-repository’s issues; the data may still change.
+**Draft.** This package is not released and has no DOI. The open
+questions on the data went to the authors on 30 October 2026, with
+answers asked for by 20 November 2026. The data may still change, and
+there is no release before that date.
 
 ## Installation
 
@@ -91,7 +92,7 @@ guluswm_survey |>
   gt::as_raw_html()
 ```
 
-<div id="tjkjovgppj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="uermlilvgk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
   &#10;  <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;" bgcolor="#FFFFFF">
   <thead style="border-style: none;">
     <tr class="gt_col_headings" style="border-style: none; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3;">
@@ -1203,7 +1204,7 @@ guluswm_waste |>
   gt::as_raw_html()
 ```
 
-<div id="mietynjvls" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="hbduorrmuq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
   &#10;  <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;" bgcolor="#FFFFFF">
   <thead style="border-style: none;">
     <tr class="gt_col_headings" style="border-style: none; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3;">
@@ -2648,17 +2649,19 @@ Please cite this package using:
 citation("guluswm")
 #> To cite package 'guluswm' in publications use:
 #> 
-#>   Feni I, Batte A, Omal J, Niwagaba C (2026). _guluswm: Household Waste
-#>   Survey and Characterisation in Gulu City, Uganda_. R package version
-#>   0.0.0.9000, <https://github.com/openwashdata/guluswm>.
+#>   Feni I, Batte A, Omal J, Niwagaba C, Schöbitz L (2026). "guluswm:
+#>   Household Waste Survey and Characterisation in Gulu City, Uganda."
+#>   <https://openwashdata.github.io/guluswm/>.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
-#>   @Manual{,
+#>   @Misc{feni_etall:2026,
 #>     title = {guluswm: Household Waste Survey and Characterisation in Gulu City, Uganda},
-#>     author = {Ivan Feni and Abubakar Batte and James Omal and Charles B. Niwagaba},
+#>     author = {Ivan Feni and Abubakar Batte and James Omal and Charles B. Niwagaba and Lars Schöbitz},
 #>     year = {2026},
-#>     note = {R package version 0.0.0.9000},
-#>     url = {https://github.com/openwashdata/guluswm},
+#>     url = {https://openwashdata.github.io/guluswm/},
+#>     abstract = {Field data of a household solid waste study in Gulu City, northern Uganda, in September and October 2026: a socio-economic household survey of 424 households in six areas of the two city divisions, covering housing, income and expenditure bands, waste storage and disposal, the collection service, payment for collection and willingness to pay for an improved service, and a seven day waste characterisation of 95 households with the weights of 16 sorted fractions, the per capita generation rate and the bulk density. The data were collected by Ivan Feni and colleagues of Makerere University and Gulu City Council for a manuscript in preparation (Feni, Batte, Omal and Niwagaba, 2026).},
+#>     keywords = {open data,washdata,solid waste management,household survey,waste characterisation,willingness to pay,Gulu,Uganda},
+#>     version = {0.0.0.9000},
 #>   }
 ```

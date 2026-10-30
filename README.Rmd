@@ -44,9 +44,10 @@ Makerere University, the University of Stuttgart and Gulu City Council for
 a manuscript in preparation, and shared with openwashdata for publication
 under the CC BY 4.0 licence.
 
-**Draft.** This package is not released and has no DOI. The authors are
-reviewing the package and answering the questions tracked in the
-repository's issues; the data may still change.
+**Draft.** This package is not released and has no DOI. The open
+questions on the data went to the authors on 30 October 2026, with
+answers asked for by 20 November 2026. The data may still change, and
+there is no release before that date.
 
 ## Installation
 
