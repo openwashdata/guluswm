@@ -6,3 +6,7 @@ docs
 data-raw/Gulu_SWM_Complete_Field_data.xlsx
 # Unpublished manuscript and supplement, kept locally for reference only.
 dev/source/
+# The authors' re-export of 30 October 2026 (coordinates, Original ID and
+# Response Code removed) still holds the enumerators' user names and two free
+# text columns. It stays out of git until the authors send the final coded copy.
+data-raw/Gulu_SWM_OpenWashData.xlsx

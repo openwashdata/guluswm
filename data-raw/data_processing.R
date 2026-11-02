@@ -9,19 +9,27 @@
 #   guluswm_waste    one row per household in the seven day waste
 #                    characterisation study (95 rows), weighed and sorted on
 #                    1 to 3 October 2026
-# The raw file is the authors' workbook Gulu_SWM_Complete_Field_data.xlsx
-# (sha256 ee9f69e05a951cf5a87bcf3f5c6bfab6409d44377ed6282f592994c3e3bc9c24),
-# two sheets: Gulu_Household_survey (424 x 49) and
-# Gulu_Waste_Characterisation (95 x 58).
+# The raw file is the authors' re-export of 30 October 2026,
+# Gulu_SWM_OpenWashData.xlsx (sha256 f0a5f05b5f89e35506bfb484939f1e8f86643437150919325e5bcb3995c563ee),
+# sent on 2 November 2026 with the answers to the author questions. Two
+# sheets: Gulu_Household_survey (424 x 46) and Gulu_Waste_Characterisation
+# (95 x 55). Against the first workbook of 27 October it drops the household
+# coordinates, Original ID, Response Code and one free text column, and it
+# moves sand and soil that had been entered under miscellaneous waste in Limo
+# and Vanguard to inorganic non combustible (answer to Q44). The workbook
+# still holds the enumerators' user names and two free text columns and is
+# git-ignored until the authors send the final coded copy.
 #
-# Columns left out of the package, pending the decision of the authors and
-# the maintainer (see the PII issue in the repository):
-#   - the household coordinates of both sheets (Latitude, Longitude)
-#   - the identifiers that carry an enumerator's name (Original ID,
-#     Response Code); the Enumerator column is kept as a code E1 to E5
-#   - the three free text answers of the survey (SWM Challenges other,
-#     Suggested Improvements, Complaint about SWM); their coded versions
-#     are kept
+# data-raw/guluswm_additional_data.csv (from extract_additional_data.R) adds
+# per household the survey weight and the wealth index score and class,
+# computed by the authors (answers to Q33 to Q36).
+#
+# Decisions of the authors (answers of 2 November 2026 to Q11 to Q13):
+#   - no household coordinates (the consent did not cover locations)
+#   - the enumerators stay codes E1 to E5 (alphabetical order of the mWater
+#     user names, the same code in both tables)
+#   - no free text answers (SWM Challenges other, Suggested Improvements,
+#     Complaint about SWM); their coded versions are kept
 # Load packages ----------------------------------------------------------------
 ## Run the following code in console if you don't have the packages
 ## install.packages(c("usethis", "fs", "here", "readr", "readxl", "openxlsx",
@@ -36,12 +44,15 @@ library(dplyr)
 library(stringr)
 
 # Read data --------------------------------------------------------------------
-raw <- here::here("data-raw", "Gulu_SWM_Complete_Field_data.xlsx")
+raw <- here::here("data-raw", "Gulu_SWM_OpenWashData.xlsx")
 survey_in <- readxl::read_excel(raw, sheet = "Gulu_Household_survey",
                                 col_types = "text", na = c("", "NA"))
 waste_in <- readxl::read_excel(raw, sheet = "Gulu_Waste_Characterisation",
                                na = c("", "NA"))
-stopifnot(dim(survey_in) == c(424, 49), dim(waste_in) == c(95, 58))
+stopifnot(dim(survey_in) == c(424, 46), dim(waste_in) == c(95, 55))
+additional <- readr::read_csv(here::here("data-raw", "guluswm_additional_data.csv"),
+                              col_types = "cdiiiiidc")
+stopifnot(nrow(additional) == 424, !anyDuplicated(additional$household_id))
 
 # Tidy data --------------------------------------------------------------------
 ## Enumerators: one code per mWater user name across both sheets, in
@@ -120,8 +131,13 @@ guluswm_survey <- survey_in |>
     swm_challenges = `SWM Challenges (coded)`,
     improvement_themes = `Improvement Themes (coded)`
   ) |>
+  left_join(select(additional, household_id, survey_weight,
+                   wealth_index_score, wealth_index_class),
+            by = "household_id") |>
+  mutate(wealth_index_class = as_levels(wealth_index_class, lv_class)) |>
   arrange(survey_date, household_id)
-stopifnot(nrow(guluswm_survey) == 424, ncol(guluswm_survey) == 43,
+stopifnot(nrow(guluswm_survey) == 424, ncol(guluswm_survey) == 46,
+          !anyNA(guluswm_survey$survey_weight),
           !anyDuplicated(guluswm_survey$household_id),
           !anyNA(guluswm_survey$survey_date),
           setequal(guluswm_survey$area, c("Limo", "Vanguard", "Highland",
