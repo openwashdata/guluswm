@@ -17,23 +17,28 @@ abstract: 'Field data of a household solid waste study in Gulu City, northern Ug
   of 95 households with the weights of 16 sorted fractions, the per capita generation
   rate and the bulk density. The data were collected by Ivan Feni and colleagues of
   Makerere University and Gulu City Council for a manuscript in preparation (Feni,
-  Batte, Omal and Niwagaba, 2026).'
+  Batte, Omal and Niwagaba, 2026). The fieldwork was funded by Integers Company Limited.
+  Ivan Feni is the contact for questions about the data.'
 authors:
 - family-names: Feni
   given-names: Ivan
+  email: fenivan2@gmail.com
+  orcid: https://orcid.org/0009-0003-2012-0421
 - family-names: Batte
   given-names: Abubakar
+  orcid: https://orcid.org/0009-0003-5230-7506
 - family-names: Omal
   given-names: James
 - family-names: Niwagaba
   given-names: Charles B.
+  orcid: https://orcid.org/0000-0003-1494-1939
 - family-names: Schöbitz
   given-names: Lars
   email: lschoebitz@ethz.ch
   orcid: https://orcid.org/0000-0003-2196-5015
 repository-code: https://github.com/openwashdata/guluswm
 url: https://openwashdata.github.io/guluswm/
-date-released: '2026-10-30'
+date-released: '2026-11-02'
 contact:
 - family-names: Schöbitz
   given-names: Lars

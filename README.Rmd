@@ -42,12 +42,15 @@ sorted into 16 fractions on 1 to 3 October 2026. The data were collected
 by Ivan Feni, Abubakar Batte, James Omal and Charles B. Niwagaba of
 Makerere University, the University of Stuttgart and Gulu City Council for
 a manuscript in preparation, and shared with openwashdata for publication
-under the CC BY 4.0 licence.
+under the CC BY 4.0 licence. The fieldwork was funded by Integers Company
+Limited. Ivan Feni is the contact for questions about the data.
 
 **Draft.** This package is not released and has no DOI. The open
-questions on the data went to the authors on 30 October 2026, with
-answers asked for by 20 November 2026. The data may still change, and
-there is no release before that date.
+questions on the data went to the authors on 30 October 2026, and they
+answered on 2 November 2026 with a corrected export of the workbook, the
+wealth index and the survey weights. The release follows once the authors
+have sent the final copy of the workbook with coded enumerators, which
+becomes the archived raw data.
 
 ## Installation
 
@@ -206,7 +209,7 @@ ggplot(analysed, aes(x = generation_kg_cap_day, y = area)) +
 
 The data come from the field data workbook of the Gulu City household
 solid waste study, shared by its authors with openwashdata in October
-2026. The study is described in Feni, I., Batte, A., Omal, J. and
+2026 and re-exported by them on 30 October 2026 with corrections. The study is described in Feni, I., Batte, A., Omal, J. and
 Niwagaba, C. B., *Household waste generation, composition and willingness
 to pay for collection in Gulu City, Uganda: implications for user charges
 in secondary cities* (manuscript in preparation). The household survey
@@ -222,12 +225,16 @@ ordered categories became factors in the order of the questionnaire, and
 the survey sheet's spelling "Pabwo Quarters" was aligned with "Pabbo
 Quarters" as used in the characterisation sheet and the manuscript.
 Multi-answer questions stay as one string with the answers separated by a
-semicolon, as in the workbook. Three groups of columns are not included
-in this version of the package: the household coordinates of both sheets,
-the identifiers that carry an enumerator's name (the enumerator is kept
-as a code E1 to E5), and the three free text answers of the survey, whose
-coded versions are included. The script `analysis/validate_data.R`
-recomputes the figures of the manuscript from the data objects.
+semicolon, as in the workbook. The survey weight by division and the
+wealth index score and class, which the authors computed and sent
+separately, were added to the survey table by household ID. At the
+authors' decision, three groups of columns are not published: the
+household coordinates of both sheets (the survey consent did not cover
+household locations), the identifiers that carry an enumerator's name
+(the enumerator is kept as a code E1 to E5), and the three free text
+answers of the survey, whose coded versions are included. The script
+`analysis/validate_data.R` recomputes the figures of the manuscript from
+the data objects.
 
 ## License
 
