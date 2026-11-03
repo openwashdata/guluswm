@@ -30,6 +30,8 @@
 #   - no household coordinates (the consent did not cover locations)
 #   - the enumerators stay codes
 #   - no free text answers; their coded versions are kept
+#   - the household ID carries the enumerator code instead of the
+#     enumerator's initials (answer of 3 November 2026)
 # Load packages ----------------------------------------------------------------
 ## Run the following code in console if you don't have the packages
 ## install.packages(c("usethis", "fs", "here", "readr", "readxl", "openxlsx",
@@ -138,7 +140,13 @@ guluswm_survey <- survey_in |>
                    wealth_index_score, wealth_index_class),
             by = "household_id") |>
   mutate(wealth_index_class = as_levels(wealth_index_class, lv_class)) |>
+  # The household ID starts with the enumerator's initials; at the authors'
+  # decision (3 November 2026) the initials are replaced by the enumerator
+  # code, so that AC-2309-001 becomes E1-2309-001.
+  mutate(household_id = paste0(enumerator, substring(household_id, 3))) |>
   arrange(survey_date, household_id)
+stopifnot(all(grepl("^E[1-5]-[0-9]{4}-[0-9]{3}$", guluswm_survey$household_id)),
+          all(substr(guluswm_survey$household_id, 1, 2) == guluswm_survey$enumerator))
 stopifnot(nrow(guluswm_survey) == 424, ncol(guluswm_survey) == 46,
           !anyNA(guluswm_survey$survey_weight),
           !anyDuplicated(guluswm_survey$household_id),

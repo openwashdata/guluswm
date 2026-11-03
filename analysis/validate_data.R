@@ -24,7 +24,7 @@ yes <- function(x) x == "Yes"
 
 cat("\n## Household survey: structure\n")
 check("424 rows, household_id unique", nrow(sv) == 424 && !anyDuplicated(sv$household_id))
-check("household_id pattern AA-YYMM-NNN", all(grepl("^[A-Z]{2}-[0-9]{4}-[0-9]{3}$", sv$household_id)))
+check("household_id pattern Ek-DDMM-NNN with the enumerator code", all(grepl("^E[1-5]-[0-9]{4}-[0-9]{3}$", sv$household_id)))
 check("survey_date within 2026-09-23 to 2026-09-26",
       all(sv$survey_date >= as.Date("2026-09-23") & sv$survey_date <= as.Date("2026-09-26")))
 check("enumerator codes E1 to E5", setequal(sv$enumerator, paste0("E", 1:5)))

@@ -14,7 +14,7 @@
 #' 
 #' @format A tibble with 424 rows and 46 variables
 #' \describe{
-#'   \item{household_id}{Identifier of the interviewed household as assigned by the study team: the enumerator's initials, the survey date as day and month (2309 for 23 September 2026) and a running number per enumerator, for example AC-2309-001.}
+#'   \item{household_id}{Identifier of the interviewed household as assigned by the study team: the enumerator code (E1 to E5, replacing the enumerator's initials used in the field), the survey date as day and month (2309 for 23 September 2026) and a running number per enumerator, for example E1-2309-001.}
 #'   \item{enumerator}{Code of the enumerator who conducted the interview, E1 to E5; the codes replace the mWater user names and are shared with guluswm_waste.}
 #'   \item{survey_date}{Date of the interview, between 23 and 26 September 2026.}
 #'   \item{area}{Study area in which the household lives: Limo, Vanguard or Highland (Laroo-Pece Division), Kanyagoga, Pabbo Quarters or Goans Quarters (Bardege-Layibi Division). Only two interviews were completed in Highland. The raw file spells Pabbo Quarters as Pabwo Quarters in this sheet.}

@@ -235,8 +235,8 @@ separately, were added to the survey table by household ID. At the
 authors' decision, three groups of columns are not published: the
 household coordinates of both sheets (the survey consent did not cover
 household locations), the identifiers that carry an enumerator's name
-(the enumerator is kept as a code E1 to E5; the household ID keeps the
-enumerator's initials, as in the authors' file), and the three free text
+(the enumerator is kept as a code E1 to E5, also in the household ID,
+where it replaces the enumerator's initials), and the three free text
 answers of the survey, whose coded versions are included. The script
 `analysis/validate_data.R` recomputes the figures of the manuscript from
 the data objects.
