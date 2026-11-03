@@ -12,27 +12,13 @@
 <!-- badges: end -->
 
 The goal of guluswm is to provide the field data of a household solid
-waste study in Gulu City, northern Uganda, as tidy data. The study
-combined a socio-economic household survey of 424 households in six
-areas of the city’s two divisions, conducted face to face with the
-mWater platform from 23 to 26 September 2026, with a seven day waste
-characterisation study in which the waste of 95 households was weighed
-and sorted into 16 fractions on 1 to 3 October 2026. The data were
-collected by Ivan Feni, Abubakar Batte, James Omal, Charles Wakhata
-(logistics, support to the enumeration and the waste characterisation),
-the enumerators Juliet Amindre, Alex Candia, Rebecca Lamwaka and Grace
-Okello, and Charles B. Niwagaba, of Makerere University, the University
-of Stuttgart and Gulu City Council, for a manuscript in preparation, and
-shared with openwashdata for publication under the CC BY 4.0 licence.
-The fieldwork was funded by Integers Company Limited. Ivan Feni is the
-contact for questions about the data.
-
-**Draft.** This package is not released and has no DOI. The open
-questions on the data went to the authors on 30 October 2026, and they
-answered on 2 November 2026 with a corrected export of the workbook, the
-wealth index and the survey weights, and sent the final copy of the
-workbook with coded enumerators on 3 November 2026 (corrected the same
-day), which is archived in `data-raw/`.
+waste study in Gulu City, northern Uganda, as tidy data. A
+socio-economic household survey of 424 households in six areas of the
+city’s two divisions was conducted face to face with the mWater platform
+from 23 to 26 September 2026. In a seven day waste characterisation
+study, the waste of 95 households was weighed and sorted into 16
+fractions on 1 to 3 October 2026. The data are published under the CC BY
+4.0 licence.
 
 ## Installation
 
@@ -98,7 +84,7 @@ guluswm_survey |>
   gt::as_raw_html()
 ```
 
-<div id="dfwydkfuzz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="vjyfiyvrct" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
   &#10;  <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;" bgcolor="#FFFFFF">
   <thead style="border-style: none;">
     <tr class="gt_col_headings" style="border-style: none; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3;">
@@ -1303,7 +1289,7 @@ guluswm_waste |>
   gt::as_raw_html()
 ```
 
-<div id="cukmrqkcap" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="cnwbbhhccy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
   &#10;  <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;" bgcolor="#FFFFFF">
   <thead style="border-style: none;">
     <tr class="gt_col_headings" style="border-style: none; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3;">
