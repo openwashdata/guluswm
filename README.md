@@ -84,7 +84,7 @@ guluswm_survey |>
   gt::as_raw_html()
 ```
 
-<div id="vjyfiyvrct" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="alcquokgjd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
   &#10;  <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;" bgcolor="#FFFFFF">
   <thead style="border-style: none;">
     <tr class="gt_col_headings" style="border-style: none; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3;">
@@ -1289,7 +1289,7 @@ guluswm_waste |>
   gt::as_raw_html()
 ```
 
-<div id="cnwbbhhccy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="vjmedrjyvp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
   &#10;  <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;" bgcolor="#FFFFFF">
   <thead style="border-style: none;">
     <tr class="gt_col_headings" style="border-style: none; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3;">
@@ -2711,37 +2711,30 @@ ggplot(analysed, aes(x = generation_kg_cap_day, y = area)) +
 ## Source and changes
 
 The data come from the field data workbook of the Gulu City household
-solid waste study, shared by its authors with openwashdata in October
-2026, re-exported by them with corrections and sent as a final copy
-without personal data on 3 November 2026
-(`data-raw/Gulu_SWM_OpenWashData_final.xlsx`). The study is described in
-Feni, I., Batte, A., Omal, J. and Niwagaba, C. B., *Household waste
-generation, composition and willingness to pay for collection in Gulu
-City, Uganda: implications for user charges in secondary cities*
-(manuscript in preparation). The household survey was administered in
-English or Acholi by five trained enumerators after verbal consent; the
-waste characterisation followed the sorting categories of ASTM D5231,
-with polyethylene bags and inert fines (sand, soil and stones from
-compound sweeping) recorded as separate fractions.
+solid waste study, archived as
+`data-raw/Gulu_SWM_OpenWashData_final.xlsx`. The household survey was
+administered in English or Acholi by five trained enumerators after
+verbal consent; the waste characterisation followed the sorting
+categories of ASTM D5231, with polyethylene bags and inert fines (sand,
+soil and stones from compound sweeping) recorded as separate fractions.
 
 We changed the material. The two sheets of the workbook were read into R
 (the script is in `data-raw/data_processing.R`), the column names were
 rewritten in snake case with the unit in the name where there is one,
 the ordered categories became factors in the order of the questionnaire,
 and the survey sheet’s spelling “Pabwo Quarters” was aligned with “Pabbo
-Quarters” as used in the characterisation sheet and the manuscript.
-Multi-answer questions stay as one string with the answers separated by
-a semicolon, as in the workbook. The survey weight by division and the
-wealth index score and class, which the authors computed and sent
-separately, were added to the survey table by household ID. At the
-authors’ decision, three groups of columns are not published: the
-household coordinates of both sheets (the survey consent did not cover
-household locations), the identifiers that carry an enumerator’s name
-(the enumerator is kept as a code E1 to E5, also in the household ID,
-where it replaces the enumerator’s initials), and the three free text
-answers of the survey, whose coded versions are included. The script
-`analysis/validate_data.R` recomputes the figures of the manuscript from
-the data objects.
+Quarters” as used in the characterisation sheet. Multi-answer questions
+stay as one string with the answers separated by a semicolon, as in the
+workbook. The survey weight by division and the wealth index score and
+class, which the authors computed and sent separately, were added to the
+survey table by household ID. At the authors’ decision, three groups of
+columns are not published: the household coordinates of both sheets (the
+survey consent did not cover household locations), the identifiers that
+carry an enumerator’s name (the enumerator is kept as a code E1 to E5,
+also in the household ID, where it replaces the enumerator’s initials),
+and the three free text answers of the survey, whose coded versions are
+included. The script `analysis/validate_data.R` recomputes summary
+figures of the study from the data objects.
 
 ## License
 
@@ -2768,7 +2761,7 @@ citation("guluswm")
 #>     author = {Ivan Feni and Abubakar Batte and James Omal and Charles Wakhata and Juliet Amindre and Alex Candia and Rebecca Lamwaka and Grace Okello and Charles B. Niwagaba and Lars Schöbitz},
 #>     year = {2026},
 #>     url = {https://openwashdata.github.io/guluswm/},
-#>     abstract = {Field data of a household solid waste study in Gulu City, northern Uganda, in September and October 2026: a socio-economic household survey of 424 households in six areas of the two city divisions, covering housing, income and expenditure bands, waste storage and disposal, the collection service, payment for collection and willingness to pay for an improved service, and a seven day waste characterisation of 95 households with the weights of 16 sorted fractions, the per capita generation rate and the bulk density. The data were collected by Ivan Feni, Abubakar Batte, James Omal, Charles Wakhata (logistics and field support), the enumerators Juliet Amindre, Alex Candia, Rebecca Lamwaka and Grace Okello, and Charles B. Niwagaba, of Makerere University, the University of Stuttgart and Gulu City Council, for a manuscript in preparation (Feni, Batte, Omal and Niwagaba, 2026). The fieldwork was funded by Integers Company Limited. Ivan Feni is the contact for questions about the data.},
+#>     abstract = {Field data of a household solid waste study in Gulu City, northern Uganda, in September and October 2026: a socio-economic household survey of 424 households in six areas of the two city divisions, covering housing, income and expenditure bands, waste storage and disposal, the collection service, payment for collection and willingness to pay for an improved service, and a seven day waste characterisation of 95 households with the weights of 16 sorted fractions, the per capita generation rate and the bulk density.},
 #>     keywords = {open data,washdata,solid waste management,household survey,waste characterisation,willingness to pay,Gulu,Uganda},
 #>     version = {0.0.0.9000},
 #>   }

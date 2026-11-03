@@ -196,13 +196,8 @@ ggplot(analysed, aes(x = generation_kg_cap_day, y = area)) +
 ## Source and changes
 
 The data come from the field data workbook of the Gulu City household
-solid waste study, shared by its authors with openwashdata in October
-2026, re-exported by them with corrections and sent as a final copy
-without personal data on 3 November 2026
-(`data-raw/Gulu_SWM_OpenWashData_final.xlsx`). The study is described in Feni, I., Batte, A., Omal, J. and
-Niwagaba, C. B., *Household waste generation, composition and willingness
-to pay for collection in Gulu City, Uganda: implications for user charges
-in secondary cities* (manuscript in preparation). The household survey
+solid waste study, archived as
+`data-raw/Gulu_SWM_OpenWashData_final.xlsx`. The household survey
 was administered in English or Acholi by five trained enumerators after
 verbal consent; the waste characterisation followed the sorting
 categories of ASTM D5231, with polyethylene bags and inert fines (sand,
@@ -213,7 +208,7 @@ We changed the material. The two sheets of the workbook were read into R
 rewritten in snake case with the unit in the name where there is one, the
 ordered categories became factors in the order of the questionnaire, and
 the survey sheet's spelling "Pabwo Quarters" was aligned with "Pabbo
-Quarters" as used in the characterisation sheet and the manuscript.
+Quarters" as used in the characterisation sheet.
 Multi-answer questions stay as one string with the answers separated by a
 semicolon, as in the workbook. The survey weight by division and the
 wealth index score and class, which the authors computed and sent
@@ -224,7 +219,7 @@ household locations), the identifiers that carry an enumerator's name
 (the enumerator is kept as a code E1 to E5, also in the household ID,
 where it replaces the enumerator's initials), and the three free text
 answers of the survey, whose coded versions are included. The script
-`analysis/validate_data.R` recomputes the figures of the manuscript from
+`analysis/validate_data.R` recomputes summary figures of the study from
 the data objects.
 
 ## License
