@@ -73,7 +73,7 @@ report("irregular_collection_problem answered: total, by service_reliable == No"
 report("complained_to answered by households that never complained",
        sprintf("%d", sum(!is.na(sv$complained_to) & sv$ever_complained == "No", na.rm = TRUE)))
 n_methods <- lengths(strsplit(sv$disposal_method, ";"))
-report("households reporting two or more disposal methods (manuscript 3.6: 63)",
+report("households reporting two or more disposal methods (manuscript 3.6: 63, revised 68; authors' notebook 64 counts the eight listed methods only)",
        sprintf("%d (three methods: %d)", sum(n_methods >= 2, na.rm = TRUE), sum(n_methods >= 3, na.rm = TRUE)))
 
 cat("\n## Household survey: valid responses against supplement Table S2\n")
@@ -148,9 +148,9 @@ report("weight check: Bardege-Layibi share of sample (59.2%) and of population (
 report("pays for collection, weighted (3.5: 16.4%)", sprintf("%.1f%%", pct(wmean(yes(sv$pays_for_collection)))))
 report("willing to pay, weighted (3.7: 54.7%)", sprintf("%.1f%%", pct(wmean(yes(sv$willing_to_pay)))))
 report("open burning among disposal methods, weighted (3.6: 36.0%)",
-       sprintf("%.1f%%", pct(wmean(grepl("Burning", sv$disposal_method)))))
+       sprintf("%.1f%%", pct(wmean(ifelse(is.na(sv$disposal_method), NA, grepl("Burning", sv$disposal_method))))))
 report("collected by service provider, weighted (3.6: 26.2%)",
-       sprintf("%.1f%%", pct(wmean(grepl("Collected by service provider", sv$disposal_method)))))
+       sprintf("%.1f%%", pct(wmean(ifelse(is.na(sv$disposal_method), NA, grepl("Collected by service provider", sv$disposal_method))))))
 report("too few skips or collection points, weighted (3.5: 70.2%)",
        sprintf("%.1f%%", pct(wmean(sv$enough_collection_points == "No"))))
 report("service unreliable among households with a service, weighted (3.5: 48.8%)",
