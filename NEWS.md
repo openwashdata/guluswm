@@ -5,7 +5,9 @@
   wealth index and survey weights as a third sheet. The before-deduction
   weights of inert fines and miscellaneous waste are rounded in the re-keyed
   records and swapped between CH-1002-021 and CH-1002-022 (asked of the
-  authors). The tie rule of `wealth_index_class` is documented.
+  authors). The tie rule of `wealth_index_class` is documented. Charles
+  Wakhata (logistics, support to the enumeration and the waste
+  characterisation) is listed as an author of the data.
 
 - Answers of the authors of 2 November 2026: the raw data are now their
   corrected re-export of 30 October 2026, in which sand and soil entered as

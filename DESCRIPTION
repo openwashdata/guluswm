@@ -9,11 +9,11 @@ Authors@R: c(
     person("James", "Omal", role = "aut"),
     person("Charles B.", "Niwagaba", role = "aut",
            comment = c(ORCID = "0000-0003-1494-1939")),
+    person("Charles", "Wakhata", role = "aut"),
     person("Juliet", "Amindre", role = "ctb"),
     person("Alex", "Candia", role = "ctb"),
     person("Grace", "Okello", role = "ctb"),
     person("Rebecca", "Lamwaka", role = "ctb"),
-    person("Charles", "Wakhata", role = "ctb"),
     person("Lars", "Schöbitz", , "lschoebitz@ethz.ch", role = "cre",
            comment = c(ORCID = "0000-0003-2196-5015"))
   )
