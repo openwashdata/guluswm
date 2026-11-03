@@ -1,5 +1,7 @@
 # guluswm (development version)
 
+- Metadata review: the package description names all nine authors of the data and the University of Stuttgart, and the citation files are regenerated (#9).
+
 - The raw data are now the authors' final copy of 3 November 2026, archived
   in `data-raw/`: coded enumerators, no coordinates, no free text, and the
   wealth index and survey weights as a third sheet. A corrected copy of the
