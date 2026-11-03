@@ -1,19 +1,37 @@
 {
   "title": "Household Waste Survey and Characterisation in Gulu City, Uganda",
-  "description": "Field data of a household solid waste study in Gulu City, northern Uganda, in September and October 2026: a socio-economic household survey of 424 households in six areas of the two city divisions, covering housing, income and expenditure bands, waste storage and disposal, the collection service, payment for collection and willingness to pay for an improved service, and a seven day waste characterisation of 95 households with the weights of 16 sorted fractions, the per capita generation rate and the bulk density. The data were collected by Ivan Feni and colleagues of Makerere University and Gulu City Council for a manuscript in preparation (Feni, Batte, Omal and Niwagaba, 2026).",
+  "description": "Field data of a household solid waste study in Gulu City, northern Uganda, in September and October 2026: a socio-economic household survey of 424 households in six areas of the two city divisions, covering housing, income and expenditure bands, waste storage and disposal, the collection service, payment for collection and willingness to pay for an improved service, and a seven day waste characterisation of 95 households with the weights of 16 sorted fractions, the per capita generation rate and the bulk density.",
   "upload_type": "dataset",
   "creators": [
     {
-      "name": "Feni, Ivan"
+      "name": "Feni, Ivan",
+      "orcid": "0009-0003-2012-0421"
     },
     {
-      "name": "Batte, Abubakar"
+      "name": "Batte, Abubakar",
+      "orcid": "0009-0003-5230-7506"
     },
     {
       "name": "Omal, James"
     },
     {
-      "name": "Niwagaba, Charles B."
+      "name": "Wakhata, Charles"
+    },
+    {
+      "name": "Amindre, Juliet"
+    },
+    {
+      "name": "Candia, Alex"
+    },
+    {
+      "name": "Lamwaka, Rebecca"
+    },
+    {
+      "name": "Okello, Grace"
+    },
+    {
+      "name": "Niwagaba, Charles B.",
+      "orcid": "0000-0003-1494-1939"
     },
     {
       "name": "Schöbitz, Lars",

@@ -33,20 +33,12 @@ knitr::opts_chunk$set(
 <!-- badges: end -->
 
 The goal of guluswm is to provide the field data of a household solid
-waste study in Gulu City, northern Uganda, as tidy data. The study
-combined a socio-economic household survey of 424 households in six areas
-of the city's two divisions, conducted face to face with the mWater
-platform from 23 to 26 September 2026, with a seven day waste
-characterisation study in which the waste of 95 households was weighed and
-sorted into 16 fractions on 1 to 3 October 2026. The data were collected
-by Ivan Feni, Abubakar Batte, James Omal and Charles B. Niwagaba of
-Makerere University, the University of Stuttgart and Gulu City Council for
-a manuscript in preparation, and shared with openwashdata for publication
-under the CC BY 4.0 licence.
-
-**Draft.** This package is not released and has no DOI. The authors are
-reviewing the package and answering the questions tracked in the
-repository's issues; the data may still change.
+waste study in Gulu City, northern Uganda, as tidy data. A socio-economic
+household survey of 424 households in six areas of the city's two
+divisions was conducted face to face with the mWater platform from 23 to
+26 September 2026. In a seven day waste characterisation study, the waste
+of 95 households was weighed and sorted into 16 fractions on 1 to 3
+October 2026. The data are published under the CC BY 4.0 licence.
 
 ## Installation
 
@@ -176,6 +168,7 @@ library(guluswm)
 library(dplyr)
 library(ggplot2)
 
+set.seed(2026)
 analysed <- guluswm_waste |>
   filter(included_in_averages == "Yes") |>
   mutate(area = reorder(area, generation_kg_cap_day, FUN = median))
@@ -203,11 +196,8 @@ ggplot(analysed, aes(x = generation_kg_cap_day, y = area)) +
 ## Source and changes
 
 The data come from the field data workbook of the Gulu City household
-solid waste study, shared by its authors with openwashdata in October
-2026. The study is described in Feni, I., Batte, A., Omal, J. and
-Niwagaba, C. B., *Household waste generation, composition and willingness
-to pay for collection in Gulu City, Uganda: implications for user charges
-in secondary cities* (manuscript in preparation). The household survey
+solid waste study, archived as
+`data-raw/Gulu_SWM_OpenWashData_final.xlsx`. The household survey
 was administered in English or Acholi by five trained enumerators after
 verbal consent; the waste characterisation followed the sorting
 categories of ASTM D5231, with polyethylene bags and inert fines (sand,
@@ -218,14 +208,19 @@ We changed the material. The two sheets of the workbook were read into R
 rewritten in snake case with the unit in the name where there is one, the
 ordered categories became factors in the order of the questionnaire, and
 the survey sheet's spelling "Pabwo Quarters" was aligned with "Pabbo
-Quarters" as used in the characterisation sheet and the manuscript.
+Quarters" as used in the characterisation sheet.
 Multi-answer questions stay as one string with the answers separated by a
-semicolon, as in the workbook. Three groups of columns are not included
-in this version of the package: the household coordinates of both sheets,
-the identifiers that carry an enumerator's name (the enumerator is kept
-as a code E1 to E5), and the three free text answers of the survey, whose
-coded versions are included. The script `analysis/validate_data.R`
-recomputes the figures of the manuscript from the data objects.
+semicolon, as in the workbook. The survey weight by division and the
+wealth index score and class, which the authors computed and sent
+separately, were added to the survey table by household ID. At the
+authors' decision, three groups of columns are not published: the
+household coordinates of both sheets (the survey consent did not cover
+household locations), the identifiers that carry an enumerator's name
+(the enumerator is kept as a code E1 to E5, also in the household ID,
+where it replaces the enumerator's initials), and the three free text
+answers of the survey, whose coded versions are included. The script
+`analysis/validate_data.R` recomputes summary figures of the study from
+the data objects.
 
 ## License
 

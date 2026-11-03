@@ -9,19 +9,29 @@
 #   guluswm_waste    one row per household in the seven day waste
 #                    characterisation study (95 rows), weighed and sorted on
 #                    1 to 3 October 2026
-# The raw file is the authors' workbook Gulu_SWM_Complete_Field_data.xlsx
-# (sha256 ee9f69e05a951cf5a87bcf3f5c6bfab6409d44377ed6282f592994c3e3bc9c24),
-# two sheets: Gulu_Household_survey (424 x 49) and
-# Gulu_Waste_Characterisation (95 x 58).
+# The raw file is the authors' corrected final copy of 3 November 2026,
+# data-raw/Gulu_SWM_OpenWashData_final.xlsx (sha256
+# 5b586b4eff10c1b43f3565b4ad4685fcee8c32b403482af602d5f689b0319a4e), archived
+# with the package. Three sheets: Gulu_Household_survey (424 x 43),
+# Gulu_Waste_Characterisation (95 x 55) and Wealth_index_and_weights
+# (424 x 11, the survey weight and the wealth index computed by the authors,
+# answers to Q33 to Q36). Against the first workbook of 27 October it has no
+# household coordinates, no identifiers carrying an enumerator's name and no
+# free text answers, the enumerators are coded E1 to E5 (alphabetical order of
+# the mWater user names, the same code in both sheets), and sand and soil
+# entered as miscellaneous waste in Limo and Vanguard are moved to inorganic
+# non combustible (answer to Q44). The corrected copy restores the raw
+# weights (incl. container) of inert fines and miscellaneous waste of the
+# re-export of 30 October 2026: the first final copy had rounded them, swapped
+# them between CH-1002-021 and CH-1002-022 and left the raw inert fines of
+# CH-1002-029 blank (issue 8).
 #
-# Columns left out of the package, pending the decision of the authors and
-# the maintainer (see the PII issue in the repository):
-#   - the household coordinates of both sheets (Latitude, Longitude)
-#   - the identifiers that carry an enumerator's name (Original ID,
-#     Response Code); the Enumerator column is kept as a code E1 to E5
-#   - the three free text answers of the survey (SWM Challenges other,
-#     Suggested Improvements, Complaint about SWM); their coded versions
-#     are kept
+# Decisions of the authors (answers of 2 November 2026 to Q11 to Q13):
+#   - no household coordinates (the consent did not cover locations)
+#   - the enumerators stay codes
+#   - no free text answers; their coded versions are kept
+#   - the household ID carries the enumerator code instead of the
+#     enumerator's initials (answer of 3 November 2026)
 # Load packages ----------------------------------------------------------------
 ## Run the following code in console if you don't have the packages
 ## install.packages(c("usethis", "fs", "here", "readr", "readxl", "openxlsx",
@@ -36,20 +46,26 @@ library(dplyr)
 library(stringr)
 
 # Read data --------------------------------------------------------------------
-raw <- here::here("data-raw", "Gulu_SWM_Complete_Field_data.xlsx")
+raw <- here::here("data-raw", "Gulu_SWM_OpenWashData_final.xlsx")
 survey_in <- readxl::read_excel(raw, sheet = "Gulu_Household_survey",
                                 col_types = "text", na = c("", "NA"))
 waste_in <- readxl::read_excel(raw, sheet = "Gulu_Waste_Characterisation",
                                na = c("", "NA"))
-stopifnot(dim(survey_in) == c(424, 49), dim(waste_in) == c(95, 58))
+additional_in <- readxl::read_excel(raw, sheet = "Wealth_index_and_weights",
+                                    na = c("", "NA"))
+stopifnot(dim(survey_in) == c(424, 43), dim(waste_in) == c(95, 55),
+          dim(additional_in) == c(424, 11))
+additional <- additional_in |>
+  transmute(household_id = `Household ID`,
+            survey_weight = round(`Survey weight`, 3),
+            wealth_index_score = round(`Wealth index score (PC1)`, 4),
+            wealth_index_class = `Wealth index class`)
+stopifnot(!anyDuplicated(additional$household_id),
+          setequal(additional$household_id, survey_in$`Household ID`))
 
 # Tidy data --------------------------------------------------------------------
-## Enumerators: one code per mWater user name across both sheets, in
-## alphabetical order of the user names. The names themselves are not
-## stored in the package.
-enumerators <- sort(unique(c(survey_in$Enumerator, waste_in$Enumerator)))
-enumerator_code <- setNames(paste0("E", seq_along(enumerators)), enumerators)
-stopifnot(length(enumerators) == 5)
+## Enumerators are coded E1 to E5 in the raw file.
+stopifnot(setequal(c(survey_in$Enumerator, waste_in$Enumerator), paste0("E", 1:5)))
 
 ## Factor levels of the ordered categories, as worded in the questionnaire.
 lv_education <- c("None", "Primary", "Secondary", "Tertiary/vocational",
@@ -77,7 +93,7 @@ as_levels <- function(x, levels) {
 guluswm_survey <- survey_in |>
   transmute(
     household_id = `Household ID`,
-    enumerator = unname(enumerator_code[Enumerator]),
+    enumerator = Enumerator,
     survey_date = as.Date(`Survey Date`),
     area = if_else(Area == "Pabwo Quarters", "Pabbo Quarters", Area),
     division = Division,
@@ -120,8 +136,19 @@ guluswm_survey <- survey_in |>
     swm_challenges = `SWM Challenges (coded)`,
     improvement_themes = `Improvement Themes (coded)`
   ) |>
+  left_join(select(additional, household_id, survey_weight,
+                   wealth_index_score, wealth_index_class),
+            by = "household_id") |>
+  mutate(wealth_index_class = as_levels(wealth_index_class, lv_class)) |>
+  # The household ID starts with the enumerator's initials; at the authors'
+  # decision (3 November 2026) the initials are replaced by the enumerator
+  # code, so that AC-2309-001 becomes E1-2309-001.
+  mutate(household_id = paste0(enumerator, substring(household_id, 3))) |>
   arrange(survey_date, household_id)
-stopifnot(nrow(guluswm_survey) == 424, ncol(guluswm_survey) == 43,
+stopifnot(all(grepl("^E[1-5]-[0-9]{4}-[0-9]{3}$", guluswm_survey$household_id)),
+          all(substr(guluswm_survey$household_id, 1, 2) == guluswm_survey$enumerator))
+stopifnot(nrow(guluswm_survey) == 424, ncol(guluswm_survey) == 46,
+          !anyNA(guluswm_survey$survey_weight),
           !anyDuplicated(guluswm_survey$household_id),
           !anyNA(guluswm_survey$survey_date),
           setequal(guluswm_survey$area, c("Limo", "Vanguard", "Highland",
@@ -158,7 +185,7 @@ stopifnot(all(c(net_cols, raw_cols) %in% names(waste_in)))
 guluswm_waste <- waste_in |>
   transmute(
     record_id = `Record ID`,
-    enumerator = unname(enumerator_code[Enumerator]),
+    enumerator = Enumerator,
     measurement_date = as.Date(`Measurement Date`),
     area = `Area (corrected)`,
     area_recorded = `Area (as recorded)`,

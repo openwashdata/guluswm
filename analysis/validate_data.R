@@ -24,7 +24,7 @@ yes <- function(x) x == "Yes"
 
 cat("\n## Household survey: structure\n")
 check("424 rows, household_id unique", nrow(sv) == 424 && !anyDuplicated(sv$household_id))
-check("household_id pattern AA-YYMM-NNN", all(grepl("^[A-Z]{2}-[0-9]{4}-[0-9]{3}$", sv$household_id)))
+check("household_id pattern Ek-DDMM-NNN with the enumerator code", all(grepl("^E[1-5]-[0-9]{4}-[0-9]{3}$", sv$household_id)))
 check("survey_date within 2026-09-23 to 2026-09-26",
       all(sv$survey_date >= as.Date("2026-09-23") & sv$survey_date <= as.Date("2026-09-26")))
 check("enumerator codes E1 to E5", setequal(sv$enumerator, paste0("E", 1:5)))
@@ -73,7 +73,7 @@ report("irregular_collection_problem answered: total, by service_reliable == No"
 report("complained_to answered by households that never complained",
        sprintf("%d", sum(!is.na(sv$complained_to) & sv$ever_complained == "No", na.rm = TRUE)))
 n_methods <- lengths(strsplit(sv$disposal_method, ";"))
-report("households reporting two or more disposal methods (manuscript 3.6: 63)",
+report("households reporting two or more disposal methods (manuscript 3.6: 63, revised 68 counting every answer incl. Other and Garden/compost)",
        sprintf("%d (three methods: %d)", sum(n_methods >= 2, na.rm = TRUE), sum(n_methods >= 3, na.rm = TRUE)))
 
 cat("\n## Household survey: valid responses against supplement Table S2\n")
@@ -138,6 +138,9 @@ report("reasons not willing (3.7: low income 73.6, government should pay 7.9)",
 
 cat("\n## Household survey: division weighted figures (weights 0.680 and 1.465, Methods 2.9.4)\n")
 w <- ifelse(sv$division == "Bardege-Layibi", 0.680, 1.465)
+check("survey_weight is 0.680 for Bardege-Layibi and 1.465 for Laroo-Pece", isTRUE(all.equal(sv$survey_weight, w)))
+check("weights follow population share / sample share (UBOS 2024: 93,848 and 139,423)",
+      isTRUE(all.equal(round(c(93848, 139423) / (93848 + 139423) / (c(251, 173) / 424), 3), c(0.680, 1.465))))
 wmean <- function(x) { ok <- !is.na(x); sum(w[ok] * x[ok]) / sum(w[ok]) }
 report("weight check: Bardege-Layibi share of sample (59.2%) and of population (40.2%)",
        sprintf("sample %.1f%%, weighted %.1f%%", pct(mean(sv$division == "Bardege-Layibi")),
@@ -145,9 +148,9 @@ report("weight check: Bardege-Layibi share of sample (59.2%) and of population (
 report("pays for collection, weighted (3.5: 16.4%)", sprintf("%.1f%%", pct(wmean(yes(sv$pays_for_collection)))))
 report("willing to pay, weighted (3.7: 54.7%)", sprintf("%.1f%%", pct(wmean(yes(sv$willing_to_pay)))))
 report("open burning among disposal methods, weighted (3.6: 36.0%)",
-       sprintf("%.1f%%", pct(wmean(grepl("Burning", sv$disposal_method)))))
+       sprintf("%.1f%%", pct(wmean(ifelse(is.na(sv$disposal_method), NA, grepl("Burning", sv$disposal_method))))))
 report("collected by service provider, weighted (3.6: 26.2%)",
-       sprintf("%.1f%%", pct(wmean(grepl("Collected by service provider", sv$disposal_method)))))
+       sprintf("%.1f%%", pct(wmean(ifelse(is.na(sv$disposal_method), NA, grepl("Collected by service provider", sv$disposal_method))))))
 report("too few skips or collection points, weighted (3.5: 70.2%)",
        sprintf("%.1f%%", pct(wmean(sv$enough_collection_points == "No"))))
 report("service unreliable among households with a service, weighted (3.5: 48.8%)",
@@ -155,6 +158,31 @@ report("service unreliable among households with a service, weighted (3.5: 48.8%
 report("aware of bylaws, receives information, clean-ups, weighted (3.6: 3.9, 6.1, 87.0)",
        sprintf("%.1f, %.1f, %.1f", pct(wmean(yes(sv$aware_of_bylaws))),
                pct(wmean(yes(sv$receives_swm_information))), pct(wmean(yes(sv$participates_cleanups)))))
+
+cat("\n## Household survey: wealth index (authors' score and class, answers to Q33 and Q34)\n")
+ind <- cbind(
+  roof = sv$roof_material %in% c("Iron sheets (new)", "Tiles/permanent"),
+  walls = sv$wall_material == "Burnt bricks, plastered",
+  electricity = yes(sv$electricity),
+  tertiary = sv$education_head %in% c("Tertiary/vocational", "University and above"),
+  salaried = sv$livelihood == "Salaried employment")
+ind[is.na(cbind(sv$roof_material, sv$wall_material, sv$electricity, sv$education_head, sv$livelihood))] <- NA
+complete <- stats::complete.cases(ind)
+report("households with all five indicators; with a wealth index score",
+       sprintf("%d; %d", sum(complete), sum(!is.na(sv$wealth_index_score))))
+pc <- stats::prcomp(ind[complete, ] * 1, scale. = TRUE)
+r <- stats::cor(pc$x[, 1], sv$wealth_index_score[complete], use = "complete.obs")
+report("first principal component of the indicators vs wealth_index_score (correlation, sign free)",
+       sprintf("%.4f; variance explained %.1f%% (authors: 45.7%%)", abs(r), 100 * pc$sdev[1]^2 / sum(pc$sdev^2)))
+report("wealth_index_class shares Low, Middle, High (authors: 63.4, 25.2, 11.4)",
+       paste(pct(prop.table(table(sv$wealth_index_class))), collapse = ", "))
+check("wealth_index_class never decreases with wealth_index_score",
+      all(tapply(sv$wealth_index_score, sv$wealth_index_class, max) <=
+            c(tapply(sv$wealth_index_score, sv$wealth_index_class, min)[-1], Inf)))
+tied <- tapply(sv$wealth_index_class, round(sv$wealth_index_score, 4), function(x) length(unique(x)) > 1)
+tied <- names(tied)[tied %in% TRUE]
+report("scores whose households fall into two classes (cut inside a tie)",
+       if (length(tied)) paste(sapply(tied, function(t) paste0(t, ": ", paste(names(table(droplevels(sv$wealth_index_class[round(sv$wealth_index_score, 4) == as.numeric(t)]))), table(droplevels(sv$wealth_index_class[round(sv$wealth_index_score, 4) == as.numeric(t)])), collapse = " "))), collapse = "; ") else "none")
 
 cat("\n## Waste characterisation: structure\n")
 check("95 rows, record_id unique", nrow(ws) == 95 && !anyDuplicated(ws$record_id))
@@ -207,6 +235,11 @@ report("bulk_density equals (filled - empty) / 10 L (within 0.6 kg/m3)",
 report("container_weight_per_fraction x fractions with raw weight > 0 equals container_deduction (within 0.02 kg)",
        sprintf("%d of 95 rows", sum(abs(ws$container_weight_per_fraction_kg * rowSums(ws[rawc] > 0) - ws$container_deduction_kg) <= 0.02)))
 
+rawsum <- rowSums(ws[rawc]); netsum <- rowSums(ws[net])
+bad <- ws$record_id[which(abs(rawsum - ws$container_deduction_kg - netsum) > 0.5)]
+report("records with a missing raw fraction weight", paste(ws$record_id[!stats::complete.cases(ws[rawc])], collapse = ", "))
+report("records where raw minus deduction misses the net sum by more than 0.5 kg", if (length(bad)) paste(bad, collapse = ", ") else "none")
+
 cat("\n## Waste characterisation: figures of the manuscript (94 analysed households)\n")
 a <- ws[ws$included_in_averages == "Yes", ]
 report("per capita generation (3.1: mean 0.36, SD 0.28, median 0.29; excl. inert 0.26, SD 0.20)",
@@ -216,6 +249,9 @@ report("per capita generation (3.1: mean 0.36, SD 0.28, median 0.29; excl. inert
 by_area <- sapply(split(a$generation_kg_cap_day, a$area), function(x) sprintf("%.2f (SD %.2f, n %d)", mean(x), sd(x), length(x)))
 report("per capita generation by area (Table 1: Kanyagoga 0.52, Pabbo 0.44, Vanguard 0.34, Highland 0.28, Limo 0.27, Goans 0.22)",
        paste(names(by_area), by_area, collapse = "; "))
+by_area2 <- sapply(split(a$generation_excl_inert_kg_cap_day, a$area), function(x) sprintf("%.2f", mean(x)))
+report("per capita generation excl. inert by area (Table 1: Limo 0.18, Vanguard 0.25)",
+       paste(names(by_area2), by_area2, collapse = "; "))
 report("per capita generation by division (3.1: Bardege-Layibi 0.41, Laroo-Pece 0.30)",
        paste(names(tapply(a$generation_kg_cap_day, a$division, mean)), round(tapply(a$generation_kg_cap_day, a$division, mean), 2), collapse = ", "))
 report("pooled ratio sum(weight) / sum(person days)", sprintf("%.3f kg/cap/day", sum(a$weight_used_kg) / sum(a$person_days)))
