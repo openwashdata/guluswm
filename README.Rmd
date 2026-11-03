@@ -40,10 +40,10 @@ platform from 23 to 26 September 2026, with a seven day waste
 characterisation study in which the waste of 95 households was weighed and
 sorted into 16 fractions on 1 to 3 October 2026. The data were collected
 by Ivan Feni, Abubakar Batte, James Omal, Charles Wakhata (logistics,
-support to the enumeration and the waste characterisation) and Charles B.
-Niwagaba of Makerere University, the University of Stuttgart and Gulu City
-Council, with the enumerators Juliet Amindre, Alex Candia, Grace
-Okello and Rebecca Lamwaka, for a manuscript in preparation, and shared with openwashdata for publication
+support to the enumeration and the waste characterisation), the
+enumerators Juliet Amindre, Alex Candia, Rebecca Lamwaka and Grace Okello,
+and Charles B. Niwagaba, of Makerere University, the University of
+Stuttgart and Gulu City Council, for a manuscript in preparation, and shared with openwashdata for publication
 under the CC BY 4.0 licence. The fieldwork was funded by Integers Company
 Limited. Ivan Feni is the contact for questions about the data.
 

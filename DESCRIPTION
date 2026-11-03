@@ -8,12 +8,12 @@ Authors@R: c(
            comment = c(ORCID = "0009-0003-5230-7506")),
     person("James", "Omal", role = "aut"),
     person("Charles", "Wakhata", role = "aut"),
+    person("Juliet", "Amindre", role = "aut"),
+    person("Alex", "Candia", role = "aut"),
+    person("Rebecca", "Lamwaka", role = "aut"),
+    person("Grace", "Okello", role = "aut"),
     person("Charles B.", "Niwagaba", role = "aut",
            comment = c(ORCID = "0000-0003-1494-1939")),
-    person("Juliet", "Amindre", role = "ctb"),
-    person("Alex", "Candia", role = "ctb"),
-    person("Grace", "Okello", role = "ctb"),
-    person("Rebecca", "Lamwaka", role = "ctb"),
     person("Lars", "Schöbitz", , "lschoebitz@ethz.ch", role = "cre",
            comment = c(ORCID = "0000-0003-2196-5015"))
   )

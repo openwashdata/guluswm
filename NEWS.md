@@ -7,7 +7,8 @@
   records and swapped between CH-1002-021 and CH-1002-022 (asked of the
   authors). The tie rule of `wealth_index_class` is documented. Charles
   Wakhata (logistics, support to the enumeration and the waste
-  characterisation) is listed as an author of the data.
+  characterisation) and the four enumerators are listed as authors of the
+  data, between the article's authors and its last author.
 
 - Answers of the authors of 2 November 2026: the raw data are now their
   corrected re-export of 30 October 2026, in which sand and soil entered as

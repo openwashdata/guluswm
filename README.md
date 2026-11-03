@@ -19,13 +19,13 @@ mWater platform from 23 to 26 September 2026, with a seven day waste
 characterisation study in which the waste of 95 households was weighed
 and sorted into 16 fractions on 1 to 3 October 2026. The data were
 collected by Ivan Feni, Abubakar Batte, James Omal, Charles Wakhata
-(logistics, support to the enumeration and the waste characterisation)
-and Charles B. Niwagaba of Makerere University, the University of
-Stuttgart and Gulu City Council, with the enumerators Juliet Amindre,
-Alex Candia, Grace Okello and Rebecca Lamwaka, for a manuscript in
-preparation, and shared with openwashdata for publication under the CC
-BY 4.0 licence. The fieldwork was funded by Integers Company Limited.
-Ivan Feni is the contact for questions about the data.
+(logistics, support to the enumeration and the waste characterisation),
+the enumerators Juliet Amindre, Alex Candia, Rebecca Lamwaka and Grace
+Okello, and Charles B. Niwagaba, of Makerere University, the University
+of Stuttgart and Gulu City Council, for a manuscript in preparation, and
+shared with openwashdata for publication under the CC BY 4.0 licence.
+The fieldwork was funded by Integers Company Limited. Ivan Feni is the
+contact for questions about the data.
 
 **Draft.** This package is not released and has no DOI. The open
 questions on the data went to the authors on 30 October 2026, and they
@@ -98,7 +98,7 @@ guluswm_survey |>
   gt::as_raw_html()
 ```
 
-<div id="zkkyesfgez" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="rivntssgib" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
   &#10;  <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;" bgcolor="#FFFFFF">
   <thead style="border-style: none;">
     <tr class="gt_col_headings" style="border-style: none; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3;">
@@ -1303,7 +1303,7 @@ guluswm_waste |>
   gt::as_raw_html()
 ```
 
-<div id="dvfvogszbb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="xeybljyzxa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
   &#10;  <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;" bgcolor="#FFFFFF">
   <thead style="border-style: none;">
     <tr class="gt_col_headings" style="border-style: none; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3;">
@@ -2769,15 +2769,16 @@ Please cite this package using:
 citation("guluswm")
 #> To cite package 'guluswm' in publications use:
 #> 
-#>   Feni I, Batte A, Omal J, Wakhata C, Niwagaba C, Schöbitz L (2026).
-#>   "guluswm: Household Waste Survey and Characterisation in Gulu City,
-#>   Uganda." <https://openwashdata.github.io/guluswm/>.
+#>   Feni I, Batte A, Omal J, Wakhata C, Amindre J, Candia A, Lamwaka R,
+#>   Okello G, Niwagaba C, Schöbitz L (2026). "guluswm: Household Waste
+#>   Survey and Characterisation in Gulu City, Uganda."
+#>   <https://openwashdata.github.io/guluswm/>.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
 #>   @Misc{feni_etall:2026,
 #>     title = {guluswm: Household Waste Survey and Characterisation in Gulu City, Uganda},
-#>     author = {Ivan Feni and Abubakar Batte and James Omal and Charles Wakhata and Charles B. Niwagaba and Lars Schöbitz},
+#>     author = {Ivan Feni and Abubakar Batte and James Omal and Charles Wakhata and Juliet Amindre and Alex Candia and Rebecca Lamwaka and Grace Okello and Charles B. Niwagaba and Lars Schöbitz},
 #>     year = {2026},
 #>     url = {https://openwashdata.github.io/guluswm/},
 #>     abstract = {Field data of a household solid waste study in Gulu City, northern Uganda, in September and October 2026: a socio-economic household survey of 424 households in six areas of the two city divisions, covering housing, income and expenditure bands, waste storage and disposal, the collection service, payment for collection and willingness to pay for an improved service, and a seven day waste characterisation of 95 households with the weights of 16 sorted fractions, the per capita generation rate and the bulk density. The data were collected by Ivan Feni and colleagues of Makerere University and Gulu City Council for a manuscript in preparation (Feni, Batte, Omal and Niwagaba, 2026). The fieldwork was funded by Integers Company Limited. Ivan Feni is the contact for questions about the data.},
