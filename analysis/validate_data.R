@@ -235,6 +235,11 @@ report("bulk_density equals (filled - empty) / 10 L (within 0.6 kg/m3)",
 report("container_weight_per_fraction x fractions with raw weight > 0 equals container_deduction (within 0.02 kg)",
        sprintf("%d of 95 rows", sum(abs(ws$container_weight_per_fraction_kg * rowSums(ws[rawc] > 0) - ws$container_deduction_kg) <= 0.02)))
 
+rawsum <- rowSums(ws[rawc]); netsum <- rowSums(ws[net])
+bad <- ws$record_id[which(abs(rawsum - ws$container_deduction_kg - netsum) > 0.5)]
+report("records with a missing raw fraction weight", paste(ws$record_id[!stats::complete.cases(ws[rawc])], collapse = ", "))
+report("records where raw minus deduction misses the net sum by more than 0.5 kg", if (length(bad)) paste(bad, collapse = ", ") else "none")
+
 cat("\n## Waste characterisation: figures of the manuscript (94 analysed households)\n")
 a <- ws[ws$included_in_averages == "Yes", ]
 report("per capita generation (3.1: mean 0.36, SD 0.28, median 0.29; excl. inert 0.26, SD 0.20)",

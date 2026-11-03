@@ -1,12 +1,10 @@
 .Rproj.user
 docs
-# The original field data workbook holds household coordinates and the
-# enumerators' user names. It stays out of git until the authors and the
-# maintainer have decided what may be published (see the PII issue).
+# Earlier workbooks of the authors hold household coordinates, enumerator
+# user names or free text answers. They are never committed; the archived
+# raw data is data-raw/Gulu_SWM_OpenWashData_final.xlsx.
 data-raw/Gulu_SWM_Complete_Field_data.xlsx
-# Unpublished manuscript and supplement, kept locally for reference only.
-dev/source/
-# The authors' re-export of 30 October 2026 (coordinates, Original ID and
-# Response Code removed) still holds the enumerators' user names and two free
-# text columns. It stays out of git until the authors send the final coded copy.
 data-raw/Gulu_SWM_OpenWashData.xlsx
+# Unpublished manuscript, supplement and the authors' replies, kept locally
+# for reference only.
+dev/source/

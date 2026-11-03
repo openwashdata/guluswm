@@ -52,7 +52,7 @@ A tibble with 424 rows and 46 variables
 \item{improvement_themes}{Improvements suggested by the respondent, coded by the study team from the free text answer; several codes are separated by a semicolon.}
 \item{survey_weight}{Post-stratification weight by division: the division's share of the population of Gulu City divided by its share of the sample. Bardege-Layibi 0.680 (population 93,848, sample 251) and Laroo-Pece 1.465 (population 139,423, sample 173), population figures from UBOS (2024).}
 \item{wealth_index_score}{Wealth index score computed by the study team: the first principal component of five standardised household indicators (roof of new iron sheets or tiles, plastered burnt brick walls, electricity, head with tertiary/vocational or university education, salaried employment as main livelihood); higher values mean wealthier. Missing for 18 households with a missing indicator.}
-\item{wealth_index_class}{Wealth class from wealth_index_score: households ranked by score and cut into Low, Middle and High in the proportions of income_class (63.4, 25.2 and 11.4 percent). Missing for 18 households.}
+\item{wealth_index_class}{Wealth class from wealth_index_score: households ranked by score and cut into Low, Middle and High in the proportions of income_class (63.4, 25.2 and 11.4 percent). Ties were ranked by their order in the raw file, so 33 households with the same score of 0.4246 are split between Low (4) and Middle (29). Missing for 18 households.}
 }
 }
 \source{

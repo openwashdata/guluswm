@@ -9,27 +9,23 @@
 #   guluswm_waste    one row per household in the seven day waste
 #                    characterisation study (95 rows), weighed and sorted on
 #                    1 to 3 October 2026
-# The raw file is the authors' re-export of 30 October 2026,
-# Gulu_SWM_OpenWashData.xlsx (sha256 f0a5f05b5f89e35506bfb484939f1e8f86643437150919325e5bcb3995c563ee),
-# sent on 2 November 2026 with the answers to the author questions. Two
-# sheets: Gulu_Household_survey (424 x 46) and Gulu_Waste_Characterisation
-# (95 x 55). Against the first workbook of 27 October it drops the household
-# coordinates, Original ID, Response Code and one free text column, and it
-# moves sand and soil that had been entered under miscellaneous waste in Limo
-# and Vanguard to inorganic non combustible (answer to Q44). The workbook
-# still holds the enumerators' user names and two free text columns and is
-# git-ignored until the authors send the final coded copy.
-#
-# data-raw/guluswm_additional_data.csv (from extract_additional_data.R) adds
-# per household the survey weight and the wealth index score and class,
-# computed by the authors (answers to Q33 to Q36).
+# The raw file is the authors' final copy of 3 November 2026,
+# data-raw/Gulu_SWM_OpenWashData_final.xlsx (sha256
+# 9a45f90a01da5999f322dcd8a8162f6f84c6f7f91b2e8b04332eed3be3624bc8), archived
+# with the package. Three sheets: Gulu_Household_survey (424 x 43),
+# Gulu_Waste_Characterisation (95 x 55) and Wealth_index_and_weights
+# (424 x 11, the survey weight and the wealth index computed by the authors,
+# answers to Q33 to Q36). Against the first workbook of 27 October it has no
+# household coordinates, no identifiers carrying an enumerator's name and no
+# free text answers, the enumerators are coded E1 to E5 (alphabetical order of
+# the mWater user names, the same code in both sheets), and sand and soil
+# entered as miscellaneous waste in Limo and Vanguard are moved to inorganic
+# non combustible (answer to Q44).
 #
 # Decisions of the authors (answers of 2 November 2026 to Q11 to Q13):
 #   - no household coordinates (the consent did not cover locations)
-#   - the enumerators stay codes E1 to E5 (alphabetical order of the mWater
-#     user names, the same code in both tables)
-#   - no free text answers (SWM Challenges other, Suggested Improvements,
-#     Complaint about SWM); their coded versions are kept
+#   - the enumerators stay codes
+#   - no free text answers; their coded versions are kept
 # Load packages ----------------------------------------------------------------
 ## Run the following code in console if you don't have the packages
 ## install.packages(c("usethis", "fs", "here", "readr", "readxl", "openxlsx",
@@ -44,23 +40,26 @@ library(dplyr)
 library(stringr)
 
 # Read data --------------------------------------------------------------------
-raw <- here::here("data-raw", "Gulu_SWM_OpenWashData.xlsx")
+raw <- here::here("data-raw", "Gulu_SWM_OpenWashData_final.xlsx")
 survey_in <- readxl::read_excel(raw, sheet = "Gulu_Household_survey",
                                 col_types = "text", na = c("", "NA"))
 waste_in <- readxl::read_excel(raw, sheet = "Gulu_Waste_Characterisation",
                                na = c("", "NA"))
-stopifnot(dim(survey_in) == c(424, 46), dim(waste_in) == c(95, 55))
-additional <- readr::read_csv(here::here("data-raw", "guluswm_additional_data.csv"),
-                              col_types = "cdiiiiidc")
-stopifnot(nrow(additional) == 424, !anyDuplicated(additional$household_id))
+additional_in <- readxl::read_excel(raw, sheet = "Wealth_index_and_weights",
+                                    na = c("", "NA"))
+stopifnot(dim(survey_in) == c(424, 43), dim(waste_in) == c(95, 55),
+          dim(additional_in) == c(424, 11))
+additional <- additional_in |>
+  transmute(household_id = `Household ID`,
+            survey_weight = round(`Survey weight`, 3),
+            wealth_index_score = round(`Wealth index score (PC1)`, 4),
+            wealth_index_class = `Wealth index class`)
+stopifnot(!anyDuplicated(additional$household_id),
+          setequal(additional$household_id, survey_in$`Household ID`))
 
 # Tidy data --------------------------------------------------------------------
-## Enumerators: one code per mWater user name across both sheets, in
-## alphabetical order of the user names. The names themselves are not
-## stored in the package.
-enumerators <- sort(unique(c(survey_in$Enumerator, waste_in$Enumerator)))
-enumerator_code <- setNames(paste0("E", seq_along(enumerators)), enumerators)
-stopifnot(length(enumerators) == 5)
+## Enumerators are coded E1 to E5 in the raw file.
+stopifnot(setequal(c(survey_in$Enumerator, waste_in$Enumerator), paste0("E", 1:5)))
 
 ## Factor levels of the ordered categories, as worded in the questionnaire.
 lv_education <- c("None", "Primary", "Secondary", "Tertiary/vocational",
@@ -88,7 +87,7 @@ as_levels <- function(x, levels) {
 guluswm_survey <- survey_in |>
   transmute(
     household_id = `Household ID`,
-    enumerator = unname(enumerator_code[Enumerator]),
+    enumerator = Enumerator,
     survey_date = as.Date(`Survey Date`),
     area = if_else(Area == "Pabwo Quarters", "Pabbo Quarters", Area),
     division = Division,
@@ -174,7 +173,7 @@ stopifnot(all(c(net_cols, raw_cols) %in% names(waste_in)))
 guluswm_waste <- waste_in |>
   transmute(
     record_id = `Record ID`,
-    enumerator = unname(enumerator_code[Enumerator]),
+    enumerator = Enumerator,
     measurement_date = as.Date(`Measurement Date`),
     area = `Area (corrected)`,
     area_recorded = `Area (as recorded)`,
