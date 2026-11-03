@@ -75,9 +75,7 @@
 #' summary(guluswm_waste$generation_kg_cap_day[guluswm_waste$included_in_averages == "Yes"])
 #' @source Field data of Ivan Feni, Abubakar Batte, James Omal and Charles B.
 #'   Niwagaba (Makerere University, University of Stuttgart and Gulu City
-#'   Council), measured from 1 to 3 October 2026 for the manuscript "Household
-#'   waste generation, composition and willingness to pay for collection in
-#'   Gulu City, Uganda" (in preparation), and shared with openwashdata as a
-#'   workbook in October and November 2026. The fieldwork was funded by
+#'   Council), measured from 1 to 3 October 2026, and shared with openwashdata
+#'   as a workbook in October and November 2026. The fieldwork was funded by
 #'   Integers Company Limited.
 "guluswm_waste"
