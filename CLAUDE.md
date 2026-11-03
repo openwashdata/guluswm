@@ -7,7 +7,7 @@ built with washr 1.2.0 for openwashdata. Read this before changing anything.
 ## Raw data and files that stay out of git
 
 - `data-raw/Gulu_SWM_OpenWashData_final.xlsx` is the archived raw data: the
-  authors' final copy of 3 November 2026 with coded enumerators (E1 to E5),
+  authors' corrected final copy of 3 November 2026 with coded enumerators (E1 to E5),
   no coordinates, no identifiers carrying names and no free text. Its third
   sheet holds the authors' survey weight and wealth index. It is committed.
 - Every earlier workbook of the authors (with coordinates, enumerator user

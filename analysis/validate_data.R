@@ -73,7 +73,7 @@ report("irregular_collection_problem answered: total, by service_reliable == No"
 report("complained_to answered by households that never complained",
        sprintf("%d", sum(!is.na(sv$complained_to) & sv$ever_complained == "No", na.rm = TRUE)))
 n_methods <- lengths(strsplit(sv$disposal_method, ";"))
-report("households reporting two or more disposal methods (manuscript 3.6: 63, revised 68; authors' notebook 64 counts the eight listed methods only)",
+report("households reporting two or more disposal methods (manuscript 3.6: 63, revised 68 counting every answer incl. Other and Garden/compost)",
        sprintf("%d (three methods: %d)", sum(n_methods >= 2, na.rm = TRUE), sum(n_methods >= 3, na.rm = TRUE)))
 
 cat("\n## Household survey: valid responses against supplement Table S2\n")

@@ -2,10 +2,11 @@
 
 - The raw data are now the authors' final copy of 3 November 2026, archived
   in `data-raw/`: coded enumerators, no coordinates, no free text, and the
-  wealth index and survey weights as a third sheet. The before-deduction
-  weights of inert fines and miscellaneous waste are rounded in the re-keyed
-  records and swapped between CH-1002-021 and CH-1002-022 (asked of the
-  authors). The tie rule of `wealth_index_class` is documented. Charles
+  wealth index and survey weights as a third sheet. A corrected copy of the
+  same day restores the before-deduction weights of inert fines and
+  miscellaneous waste of the 30 October re-export (the first copy had
+  rounded them, swapped them between CH-1002-021 and CH-1002-022 and left
+  one blank); the net weights are unchanged. The tie rule of `wealth_index_class` is documented. Charles
   Wakhata (logistics, support to the enumeration and the waste
   characterisation) and the four enumerators are listed as authors of the
   data, between the article's authors and its last author.

@@ -9,9 +9,9 @@
 #   guluswm_waste    one row per household in the seven day waste
 #                    characterisation study (95 rows), weighed and sorted on
 #                    1 to 3 October 2026
-# The raw file is the authors' final copy of 3 November 2026,
+# The raw file is the authors' corrected final copy of 3 November 2026,
 # data-raw/Gulu_SWM_OpenWashData_final.xlsx (sha256
-# 9a45f90a01da5999f322dcd8a8162f6f84c6f7f91b2e8b04332eed3be3624bc8), archived
+# 5b586b4eff10c1b43f3565b4ad4685fcee8c32b403482af602d5f689b0319a4e), archived
 # with the package. Three sheets: Gulu_Household_survey (424 x 43),
 # Gulu_Waste_Characterisation (95 x 55) and Wealth_index_and_weights
 # (424 x 11, the survey weight and the wealth index computed by the authors,
@@ -20,7 +20,11 @@
 # free text answers, the enumerators are coded E1 to E5 (alphabetical order of
 # the mWater user names, the same code in both sheets), and sand and soil
 # entered as miscellaneous waste in Limo and Vanguard are moved to inorganic
-# non combustible (answer to Q44).
+# non combustible (answer to Q44). The corrected copy restores the raw
+# weights (incl. container) of inert fines and miscellaneous waste of the
+# re-export of 30 October 2026: the first final copy had rounded them, swapped
+# them between CH-1002-021 and CH-1002-022 and left the raw inert fines of
+# CH-1002-029 blank (issue 8).
 #
 # Decisions of the authors (answers of 2 November 2026 to Q11 to Q13):
 #   - no household coordinates (the consent did not cover locations)

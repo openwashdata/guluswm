@@ -51,8 +51,8 @@ Limited. Ivan Feni is the contact for questions about the data.
 questions on the data went to the authors on 30 October 2026, and they
 answered on 2 November 2026 with a corrected export of the workbook, the
 wealth index and the survey weights, and sent the final copy of the
-workbook with coded enumerators on 3 November 2026, which is archived in
-`data-raw/`.
+workbook with coded enumerators on 3 November 2026 (corrected the same
+day), which is archived in `data-raw/`.
 
 ## Installation
 
