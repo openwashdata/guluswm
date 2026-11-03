@@ -1,6 +1,6 @@
 Package: guluswm
 Title: Household Waste Survey and Characterisation in Gulu City, Uganda
-Version: 0.0.0.9000
+Version: 1.0.0
 Authors@R: c(
     person("Ivan", "Feni", , "fenivan2@gmail.com", role = "aut",
            comment = c(ORCID = "0009-0003-2012-0421")),
@@ -30,7 +30,7 @@ X-schema.org-spatialCoverage: Gulu City, Uganda
 X-schema.org-temporalCoverage: 2026-09-23/2026-10-03
 Config/Needs/website: rmarkdown, brand.yml
 Language: en-GB
-Date: 2026-11-02
+Date: 2026-11-03
 URL: https://github.com/openwashdata/guluswm,
     https://openwashdata.github.io/guluswm/
 BugReports: https://github.com/openwashdata/guluswm/issues

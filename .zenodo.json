@@ -40,7 +40,7 @@
   ],
   "license": "cc-by-4.0",
   "keywords": ["open data", "washdata", "solid waste management", "household survey", "waste characterisation", "willingness to pay", "Gulu", "Uganda"],
-  "version": "0.0.0.9000",
+  "version": "1.0.0",
   "communities": [
     {
       "identifier": "openwashdata"
