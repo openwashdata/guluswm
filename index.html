@@ -23,10 +23,12 @@
   "@type": "Dataset",
   "name": "Household Waste Survey and Characterisation in Gulu City, Uganda",
   "alternateName": "guluswm",
-  "description": "Field data of a household solid waste study in Gulu City, northern Uganda, in September and October 2026: a socio-economic household survey of 424 households in six areas of the two city divisions, covering housing, income and expenditure bands, waste storage and disposal, the collection service, payment for collection and willingness to pay for an improved service, and a seven day waste characterisation of 95 households with the weights of 16 sorted fractions, the per capita generation rate and the bulk density. The data were collected by Ivan Feni and colleagues of Makerere University and Gulu City Council for a manuscript in preparation (Feni, Batte, Omal and Niwagaba, 2026). The fieldwork was funded by Integers Company Limited. Ivan Feni is the contact for questions about the data.",
-  "version": "0.0.0.9000",
+  "description": "Field data of a household solid waste study in Gulu City, northern Uganda, in September and October 2026: a socio-economic household survey of 424 households in six areas of the two city divisions, covering housing, income and expenditure bands, waste storage and disposal, the collection service, payment for collection and willingness to pay for an improved service, and a seven day waste characterisation of 95 households with the weights of 16 sorted fractions, the per capita generation rate and the bulk density.",
+  "version": "1.0.0",
   "url": "https://openwashdata.github.io/guluswm/",
-  "datePublished": "2026-11-02",
+  "sameAs": "https://doi.org/10.5281/zenodo.23918126",
+  "identifier": "10.5281/zenodo.23918126",
+  "datePublished": "2026-11-03",
   "license": "https://creativecommons.org/licenses/by/4.0/",
   "isAccessibleForFree": true,
   "keywords": ["open data", "washdata", "solid waste management", "household survey", "waste characterisation", "willingness to pay", "Gulu", "Uganda"],
@@ -50,6 +52,36 @@
       "givenName": "James",
       "familyName": "Omal",
       "name": "James Omal"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Charles",
+      "familyName": "Wakhata",
+      "name": "Charles Wakhata"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Juliet",
+      "familyName": "Amindre",
+      "name": "Juliet Amindre"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Alex",
+      "familyName": "Candia",
+      "name": "Alex Candia"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Rebecca",
+      "familyName": "Lamwaka",
+      "name": "Rebecca Lamwaka"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Grace",
+      "familyName": "Okello",
+      "name": "Grace Okello"
     },
     {
       "@type": "Person",
@@ -93,7 +125,7 @@
     {
       "@type": "PropertyValue",
       "name": "guluswm_survey.household_id",
-      "description": "Identifier of the interviewed household as assigned by the study team: the enumerator's initials, the survey date as day and month (2309 for 23 September 2026) and a running number per enumerator, for example AC-2309-001."
+      "description": "Identifier of the interviewed household as assigned by the study team: the enumerator code (E1 to E5, replacing the enumerator's initials used in the field), the survey date as day and month (2309 for 23 September 2026) and a running number per enumerator, for example E1-2309-001."
     },
     {
       "@type": "PropertyValue",
@@ -318,7 +350,7 @@
     {
       "@type": "PropertyValue",
       "name": "guluswm_survey.wealth_index_class",
-      "description": "Wealth class from wealth_index_score: households ranked by score and cut into Low, Middle and High in the proportions of income_class (63.4, 25.2 and 11.4 percent). Missing for 18 households."
+      "description": "Wealth class from wealth_index_score: households ranked by score and cut into Low, Middle and High in the proportions of income_class (63.4, 25.2 and 11.4 percent). Ties were ranked by their order in the raw file, so 33 households with the same score of 0.4246 are split between Low (4) and Middle (29). Missing for 18 households."
     },
     {
       "@type": "PropertyValue",
@@ -669,7 +701,7 @@
 </h1></div>
 <!-- badges: start -->
 
-<!-- badges: end -->
+<p><a href="https://zenodo.org/doi/10.5281/zenodo.23918126" class="external-link"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.23918126.svg" alt="DOI"></a> <!-- badges: end --></p>
 <p>The goal of guluswm is to provide the field data of a household solid waste study in Gulu City, northern Uganda, as tidy data. A socio-economic household survey of 424 households in six areas of the city’s two divisions was conducted face to face with the mWater platform from 23 to 26 September 2026. In a seven day waste characterisation study, the waste of 95 households was weighed and sorted into 16 fractions on 1 to 3 October 2026. The data are published under the CC BY 4.0 licence.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -733,7 +765,7 @@
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">gt</span><span class="fu">::</span><span class="fu">gt</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">gt</span><span class="fu">::</span><span class="fu">as_raw_html</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div id="alcquokgjd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="kmdutuoyak" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 
 
 <table class="table gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;" bgcolor="#FFFFFF">
@@ -1835,7 +1867,7 @@ Wealth class from wealth_index_score: households ranked by score and cut into Lo
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">gt</span><span class="fu">::</span><span class="fu">gt</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">gt</span><span class="fu">::</span><span class="fu">as_raw_html</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div id="vjmedrjyvp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="wavkcyqwhd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 
 
 <table class="table gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;" bgcolor="#FFFFFF">
@@ -3192,6 +3224,8 @@ Weight of miscellaneous waste (residual fine material) as weighed in the field, 
 <span><span class="co">#&gt;   Feni I, Batte A, Omal J, Wakhata C, Amindre J, Candia A, Lamwaka R,</span></span>
 <span><span class="co">#&gt;   Okello G, Niwagaba C, Schöbitz L (2026). "guluswm: Household Waste</span></span>
 <span><span class="co">#&gt;   Survey and Characterisation in Gulu City, Uganda."</span></span>
+<span><span class="co">#&gt;   doi:10.5281/zenodo.23918126</span></span>
+<span><span class="co">#&gt;   &lt;https://doi.org/10.5281/zenodo.23918126&gt;.</span></span>
 <span><span class="co">#&gt;   &lt;https://openwashdata.github.io/guluswm/&gt;.</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
@@ -3200,10 +3234,11 @@ Weight of miscellaneous waste (residual fine material) as weighed in the field, 
 <span><span class="co">#&gt;     title = {guluswm: Household Waste Survey and Characterisation in Gulu City, Uganda},</span></span>
 <span><span class="co">#&gt;     author = {Ivan Feni and Abubakar Batte and James Omal and Charles Wakhata and Juliet Amindre and Alex Candia and Rebecca Lamwaka and Grace Okello and Charles B. Niwagaba and Lars Schöbitz},</span></span>
 <span><span class="co">#&gt;     year = {2026},</span></span>
+<span><span class="co">#&gt;     doi = {10.5281/zenodo.23918126},</span></span>
 <span><span class="co">#&gt;     url = {https://openwashdata.github.io/guluswm/},</span></span>
 <span><span class="co">#&gt;     abstract = {Field data of a household solid waste study in Gulu City, northern Uganda, in September and October 2026: a socio-economic household survey of 424 households in six areas of the two city divisions, covering housing, income and expenditure bands, waste storage and disposal, the collection service, payment for collection and willingness to pay for an improved service, and a seven day waste characterisation of 95 households with the weights of 16 sorted fractions, the per capita generation rate and the bulk density.},</span></span>
 <span><span class="co">#&gt;     keywords = {open data,washdata,solid waste management,household survey,waste characterisation,willingness to pay,Gulu,Uganda},</span></span>
-<span><span class="co">#&gt;     version = {0.0.0.9000},</span></span>
+<span><span class="co">#&gt;     version = {1.0.0},</span></span>
 <span><span class="co">#&gt;   }</span></span></code></pre></div>
 </div>
 </div>
