@@ -1,5 +1,7 @@
 # guluswm (development version)
 
+- Documentation review: the README says that `household_id` keeps the enumerator's initials, as the help page does (#13).
+
 - Data review: no change to the data. A data quality report (`analysis/data_quality.R`) counts missing values, duplicates, range and cross-field violations (none) and outliers; the household-level data are signed off for publication (#11).
 
 - Metadata review: the package description names all nine authors of the data and the University of Stuttgart, and the citation files are regenerated (#9).
