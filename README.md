@@ -98,7 +98,7 @@ guluswm_survey |>
   gt::as_raw_html()
 ```
 
-<div id="aujbnsjbvc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="rrhtuwokaq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
   &#10;  <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;" bgcolor="#FFFFFF">
   <thead style="border-style: none;">
     <tr class="gt_col_headings" style="border-style: none; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3;">
@@ -1303,7 +1303,7 @@ guluswm_waste |>
   gt::as_raw_html()
 ```
 
-<div id="yoemroajeb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="uzxeuftuqf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
   &#10;  <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;" bgcolor="#FFFFFF">
   <thead style="border-style: none;">
     <tr class="gt_col_headings" style="border-style: none; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3;">
@@ -2751,7 +2751,8 @@ separately, were added to the survey table by household ID. At the
 authors’ decision, three groups of columns are not published: the
 household coordinates of both sheets (the survey consent did not cover
 household locations), the identifiers that carry an enumerator’s name
-(the enumerator is kept as a code E1 to E5), and the three free text
+(the enumerator is kept as a code E1 to E5; the household ID keeps the
+enumerator’s initials, as in the authors’ file), and the three free text
 answers of the survey, whose coded versions are included. The script
 `analysis/validate_data.R` recomputes the figures of the manuscript from
 the data objects.
@@ -2781,7 +2782,7 @@ citation("guluswm")
 #>     author = {Ivan Feni and Abubakar Batte and James Omal and Charles Wakhata and Juliet Amindre and Alex Candia and Rebecca Lamwaka and Grace Okello and Charles B. Niwagaba and Lars Schöbitz},
 #>     year = {2026},
 #>     url = {https://openwashdata.github.io/guluswm/},
-#>     abstract = {Field data of a household solid waste study in Gulu City, northern Uganda, in September and October 2026: a socio-economic household survey of 424 households in six areas of the two city divisions, covering housing, income and expenditure bands, waste storage and disposal, the collection service, payment for collection and willingness to pay for an improved service, and a seven day waste characterisation of 95 households with the weights of 16 sorted fractions, the per capita generation rate and the bulk density. The data were collected by Ivan Feni and colleagues of Makerere University and Gulu City Council for a manuscript in preparation (Feni, Batte, Omal and Niwagaba, 2026). The fieldwork was funded by Integers Company Limited. Ivan Feni is the contact for questions about the data.},
+#>     abstract = {Field data of a household solid waste study in Gulu City, northern Uganda, in September and October 2026: a socio-economic household survey of 424 households in six areas of the two city divisions, covering housing, income and expenditure bands, waste storage and disposal, the collection service, payment for collection and willingness to pay for an improved service, and a seven day waste characterisation of 95 households with the weights of 16 sorted fractions, the per capita generation rate and the bulk density. The data were collected by Ivan Feni, Abubakar Batte, James Omal, Charles Wakhata (logistics and field support), the enumerators Juliet Amindre, Alex Candia, Rebecca Lamwaka and Grace Okello, and Charles B. Niwagaba, of Makerere University, the University of Stuttgart and Gulu City Council, for a manuscript in preparation (Feni, Batte, Omal and Niwagaba, 2026). The fieldwork was funded by Integers Company Limited. Ivan Feni is the contact for questions about the data.},
 #>     keywords = {open data,washdata,solid waste management,household survey,waste characterisation,willingness to pay,Gulu,Uganda},
 #>     version = {0.0.0.9000},
 #>   }
