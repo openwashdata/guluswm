@@ -9,6 +9,7 @@ type: dataset
 license: CC-BY-4.0
 title: 'guluswm: Household Waste Survey and Characterisation in Gulu City, Uganda'
 version: 1.0.0
+doi: 10.5281/zenodo.23918126
 abstract: 'Field data of a household solid waste study in Gulu City, northern Uganda,
   in September and October 2026: a socio-economic household survey of 424 households
   in six areas of the two city divisions, covering housing, income and expenditure

@@ -9,6 +9,7 @@
 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![R-CMD-check](https://github.com/openwashdata/guluswm/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/openwashdata/guluswm/actions/workflows/R-CMD-check.yaml)
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23918126.svg)](https://zenodo.org/doi/10.5281/zenodo.23918126)
 <!-- badges: end -->
 
 The goal of guluswm is to provide the field data of a household solid
@@ -84,7 +85,7 @@ guluswm_survey |>
   gt::as_raw_html()
 ```
 
-<div id="alcquokgjd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="kmdutuoyak" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
   &#10;  <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;" bgcolor="#FFFFFF">
   <thead style="border-style: none;">
     <tr class="gt_col_headings" style="border-style: none; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3;">
@@ -1289,7 +1290,7 @@ guluswm_waste |>
   gt::as_raw_html()
 ```
 
-<div id="vjmedrjyvp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="wavkcyqwhd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
   &#10;  <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false" style="-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;" bgcolor="#FFFFFF">
   <thead style="border-style: none;">
     <tr class="gt_col_headings" style="border-style: none; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3;">
@@ -2752,6 +2753,8 @@ citation("guluswm")
 #>   Feni I, Batte A, Omal J, Wakhata C, Amindre J, Candia A, Lamwaka R,
 #>   Okello G, Niwagaba C, Schöbitz L (2026). "guluswm: Household Waste
 #>   Survey and Characterisation in Gulu City, Uganda."
+#>   doi:10.5281/zenodo.23918126
+#>   <https://doi.org/10.5281/zenodo.23918126>.
 #>   <https://openwashdata.github.io/guluswm/>.
 #> 
 #> A BibTeX entry for LaTeX users is
@@ -2760,9 +2763,10 @@ citation("guluswm")
 #>     title = {guluswm: Household Waste Survey and Characterisation in Gulu City, Uganda},
 #>     author = {Ivan Feni and Abubakar Batte and James Omal and Charles Wakhata and Juliet Amindre and Alex Candia and Rebecca Lamwaka and Grace Okello and Charles B. Niwagaba and Lars Schöbitz},
 #>     year = {2026},
+#>     doi = {10.5281/zenodo.23918126},
 #>     url = {https://openwashdata.github.io/guluswm/},
 #>     abstract = {Field data of a household solid waste study in Gulu City, northern Uganda, in September and October 2026: a socio-economic household survey of 424 households in six areas of the two city divisions, covering housing, income and expenditure bands, waste storage and disposal, the collection service, payment for collection and willingness to pay for an improved service, and a seven day waste characterisation of 95 households with the weights of 16 sorted fractions, the per capita generation rate and the bulk density.},
 #>     keywords = {open data,washdata,solid waste management,household survey,waste characterisation,willingness to pay,Gulu,Uganda},
-#>     version = {0.0.0.9000},
+#>     version = {1.0.0},
 #>   }
 ```
