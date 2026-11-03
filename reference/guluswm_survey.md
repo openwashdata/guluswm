@@ -6,9 +6,11 @@ household characteristics, housing and utilities, income and expenditure
 bands, the types of waste generated, storage and disposal, the
 collection service, payment for collection, willingness to pay for an
 improved service and awareness of by-laws. The 424 households live in
-six areas of the two divisions of Gulu City. The household coordinates
-and the three free text answers of the questionnaire are not included in
-this version of the package.
+six areas of the two divisions of Gulu City. The table also holds the
+survey weight by division and the wealth index computed by the study
+team. At the authors' decision, the household coordinates (the consent
+did not cover locations) and the free text answers of the questionnaire
+are not published, and the enumerators are coded.
 
 ## Usage
 
@@ -18,13 +20,15 @@ guluswm_survey
 
 ## Format
 
-A tibble with 424 rows and 43 variables
+A tibble with 424 rows and 46 variables
 
 - household_id:
 
   Identifier of the interviewed household as assigned by the study team:
-  two letters for the enumerator, the survey month (2309 for
-  September 2026) and a running number, for example AC-2309-001.
+  the enumerator code (E1 to E5, replacing the enumerator's initials
+  used in the field), the survey date as day and month (2309 for 23
+  September 2026) and a running number per enumerator, for example
+  E1-2309-001.
 
 - enumerator:
 
@@ -39,8 +43,9 @@ A tibble with 424 rows and 43 variables
 
   Study area in which the household lives: Limo, Vanguard or Highland
   (Laroo-Pece Division), Kanyagoga, Pabbo Quarters or Goans Quarters
-  (Bardege-Layibi Division). The raw file spells Pabbo Quarters as Pabwo
-  Quarters in this sheet.
+  (Bardege-Layibi Division). Only two interviews were completed in
+  Highland. The raw file spells Pabbo Quarters as Pabwo Quarters in this
+  sheet.
 
 - division:
 
@@ -58,7 +63,8 @@ A tibble with 424 rows and 43 variables
 - education_head:
 
   Highest level of education of the household head, in rising order:
-  None, Primary, Secondary, Tertiary/vocational, University and above.
+  None (no formal education), Primary, Secondary, Tertiary/vocational,
+  University and above.
 
 - livelihood:
 
@@ -74,7 +80,8 @@ A tibble with 424 rows and 43 variables
 
   Income class derived from income_band: Low (no regular income or below
   UGX 300,000), Middle (UGX 300,000 to 600,000) or High (above UGX
-  600,000).
+  600,000). The proportions of these classes set the cut points of
+  wealth_index_class.
 
 - expenditure_band:
 
@@ -84,7 +91,7 @@ A tibble with 424 rows and 43 variables
 - wall_material:
 
   Main material of the walls of the dwelling: Mud/wattle, Unburnt
-  bricks, Burnt bricks unplastered, Burnt bricks plastered or Other.
+  bricks, Burnt bricks, unplastered, Burnt bricks, plastered or Other.
 
 - roof_material:
 
@@ -127,8 +134,9 @@ A tibble with 424 rows and 43 variables
 - preferred_frequency:
 
   Collection frequency the household would prefer: Daily, More than once
-  a week, Three times a week, Twice a week, Weekly, Collection points
-  every month or Other.
+  a week, Three times a week, Twice a week, Weekly or Other; the answer
+  Collection points every month was recorded under Other as an open
+  answer.
 
 - preferred_time:
 
@@ -137,8 +145,10 @@ A tibble with 424 rows and 43 variables
 
 - service_reliable:
 
-  Whether the household considers its collection service reliable (Yes
-  or No); asked of households with a service.
+  Whether the household considers waste collection in its area reliable
+  (Yes or No). The question was independent of waste_collector: some
+  households whose waste is not collected take it to the municipal
+  skips.
 
 - irregular_collection_problem:
 
@@ -176,12 +186,17 @@ A tibble with 424 rows and 43 variables
 - payment_channel:
 
   How the household pays for collection: Direct to City/Division
-  Council, Through the landlord or Other.
+  Council, Through the landlord or Other. The question was shown to
+  every household; for households that do not pay (pays_for_collection
+  is No) the answer is not applicable, and for paying households Other
+  covers channels not listed.
 
 - payment_schedule:
 
   How often the household pays for collection: Daily, Whenever
-  collected, Bi-weekly or Monthly.
+  collected, Bi-weekly or Monthly. The question was shown to every
+  household; for households that do not pay (pays_for_collection is No)
+  the answer is not applicable.
 
 - willing_to_pay:
 
@@ -251,30 +266,53 @@ A tibble with 424 rows and 43 variables
   Improvements suggested by the respondent, coded by the study team from
   the free text answer; several codes are separated by a semicolon.
 
+- survey_weight:
+
+  Post-stratification weight by division: the division's share of the
+  population of Gulu City divided by its share of the sample.
+  Bardege-Layibi 0.680 (population 93,848, sample 251) and Laroo-Pece
+  1.465 (population 139,423, sample 173), population figures from UBOS
+  (2024).
+
+- wealth_index_score:
+
+  Wealth index score computed by the study team: the first principal
+  component of five standardised household indicators (roof of new iron
+  sheets or tiles, plastered burnt brick walls, electricity, head with
+  tertiary/vocational or university education, salaried employment as
+  main livelihood); higher values mean wealthier. Missing for 18
+  households with a missing indicator.
+
+- wealth_index_class:
+
+  Wealth class from wealth_index_score: households ranked by score and
+  cut into Low, Middle and High in the proportions of income_class
+  (63.4, 25.2 and 11.4 percent). Ties were ranked by their order in the
+  raw file, so 33 households with the same score of 0.4246 are split
+  between Low (4) and Middle (29). Missing for 18 households.
+
 ## Source
 
 Field data of Ivan Feni, Abubakar Batte, James Omal and Charles B.
 Niwagaba (Makerere University, University of Stuttgart and Gulu City
 Council), collected with the mWater platform from 23 to 26 September
-2026 for the manuscript "Household waste generation, composition and
-willingness to pay for collection in Gulu City, Uganda" (in
-preparation), and shared with openwashdata as a workbook in October
-2026.
+2026, and shared with openwashdata as a workbook in October and November
+2026. The fieldwork was funded by Integers Company Limited.
 
 ## Examples
 
 ``` r
 head(guluswm_survey)
-#> # A tibble: 6 × 43
+#> # A tibble: 6 × 46
 #>   household_id enumerator survey_date area  division   household_size
 #>   <chr>        <chr>      <date>      <chr> <chr>               <int>
-#> 1 AC-2309-001  E1         2026-09-23  Limo  Laroo-Pece              2
-#> 2 AC-2309-002  E1         2026-09-23  Limo  Laroo-Pece              4
-#> 3 AC-2309-003  E1         2026-09-23  Limo  Laroo-Pece              7
-#> 4 AC-2309-004  E1         2026-09-23  Limo  Laroo-Pece              3
-#> 5 AC-2309-005  E1         2026-09-23  Limo  Laroo-Pece              7
-#> 6 AC-2309-006  E1         2026-09-23  Limo  Laroo-Pece              4
-#> # ℹ 37 more variables: respondent_is_head <chr>, education_head <fct>,
+#> 1 E1-2309-001  E1         2026-09-23  Limo  Laroo-Pece              2
+#> 2 E1-2309-002  E1         2026-09-23  Limo  Laroo-Pece              4
+#> 3 E1-2309-003  E1         2026-09-23  Limo  Laroo-Pece              7
+#> 4 E1-2309-004  E1         2026-09-23  Limo  Laroo-Pece              3
+#> 5 E1-2309-005  E1         2026-09-23  Limo  Laroo-Pece              7
+#> 6 E1-2309-006  E1         2026-09-23  Limo  Laroo-Pece              4
+#> # ℹ 40 more variables: respondent_is_head <chr>, education_head <fct>,
 #> #   livelihood <chr>, income_band <fct>, income_class <fct>,
 #> #   expenditure_band <fct>, wall_material <chr>, roof_material <chr>,
 #> #   piped_water <chr>, electricity <chr>, waste_types <chr>,

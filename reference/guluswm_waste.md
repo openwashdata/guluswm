@@ -43,8 +43,10 @@ A tibble with 95 rows and 55 variables
 
 - area_recorded:
 
-  Study area as recorded on the field form, before the correction; it
-  differs from area for 14 households.
+  Study area as recorded on the field form. The field kept the previous
+  entry when two enumerators switched areas; the study team corrected 14
+  records against the enumerators' daily area logs and the field
+  supervision records (see area).
 
 - division:
 
@@ -54,7 +56,8 @@ A tibble with 95 rows and 55 variables
 - household_form_id:
 
   Household number written on the field form and the bags, for example
-  HH-01; it restarts per enumerator and area and is not unique.
+  HH-01, used for field supervision; it restarts per enumerator and area
+  and is not unique, record_id identifies the household.
 
 - occupants:
 
@@ -67,7 +70,8 @@ A tibble with 95 rows and 55 variables
 - days_stored:
 
   Number of days over which the household stored its waste in the bags
-  provided: 7 for every household but one, which stored for 14 days.
+  provided: 7 for every household but one in the test run, which stored
+  for 14 days.
 
 - person_days:
 
@@ -86,13 +90,17 @@ A tibble with 95 rows and 55 variables
 
 - weight_used_kg:
 
-  Total weight of the household's waste used in the analysis, in
-  kilograms, after the correction of keying errors.
+  Total weight of the household's waste used for the generation rate, in
+  kilograms: the recorded total, except for one keying error
+  (CH-1001-012, grams entered as kilograms), where the sum of the sorted
+  fractions is used.
 
 - mass_balance_diff_pct:
 
   Difference between the recorded total weight and the sum of the sorted
-  fractions, as a percentage of the recorded total weight.
+  fractions, as a percentage of the recorded total weight. Differences
+  come from container weights, moisture loss and spillage during
+  sorting; no record was excluded because of it.
 
 - generation_kg_cap_day:
 
@@ -102,23 +110,25 @@ A tibble with 95 rows and 55 variables
 - generation_excl_inert_kg_cap_day:
 
   Per capita waste generation rate without the inert fines (sand, soil
-  and stones), in kilograms per person and day.
+  and stones), in kilograms per person and day: weight_used_kg minus
+  inert_fines_kg, divided by person_days.
 
 - included_in_averages:
 
-  Whether the household is included in the averages of the study: Yes
-  for 94 households, No (outlier \> 2.0) for the one household with a
-  generation rate above 2 kilograms per person and day.
+  Whether the household is included in the averages of the study: the
+  rule of at most 2.0 kilograms per person and day was applied to every
+  record, and only one household exceeded it (No (outlier \> 2.0)).
 
 - bucket_empty_kg:
 
   Weight of the empty 10 litre bucket used to measure the bulk density,
-  in kilograms.
+  in kilograms; one bucket was used and cleaned between households.
 
 - bucket_filled_kg:
 
   Weight of the 10 litre bucket filled loosely with the household's
-  waste, in kilograms.
+  mixed waste before sorting, in kilograms; the mean of at least three
+  weighings.
 
 - bulk_density_kg_m3:
 
@@ -127,13 +137,16 @@ A tibble with 95 rows and 55 variables
 
 - container_deduction_kg:
 
-  Total weight deducted for the containers in which the fractions were
-  weighed, in kilograms, summed over the fractions.
+  Total weight deducted for the containers (weighing basins and bags) in
+  which the fractions were weighed, in kilograms, summed over the
+  fractions.
 
 - container_weight_per_fraction_kg:
 
   Container weight deducted from each fraction with a recorded weight,
-  in kilograms.
+  in kilograms. Where the raw fractions summed to more than the recorded
+  total, the study team estimated it as the excess divided by the number
+  of fractions weighed.
 
 - food_kitchen_kg:
 
@@ -204,7 +217,9 @@ A tibble with 95 rows and 55 variables
 
   Weight of inert fines (sand, soil and stones from compound sweeping,
   recorded as inorganic non combustible), in kilograms, after the
-  container deduction.
+  container deduction. In Limo and Vanguard, sand and soil first entered
+  as miscellaneous waste were moved here in the re-export of 30 October
+  2026.
 
 - miscellaneous_kg:
 
@@ -296,10 +311,9 @@ A tibble with 95 rows and 55 variables
 
 Field data of Ivan Feni, Abubakar Batte, James Omal and Charles B.
 Niwagaba (Makerere University, University of Stuttgart and Gulu City
-Council), measured from 1 to 3 October 2026 for the manuscript
-"Household waste generation, composition and willingness to pay for
-collection in Gulu City, Uganda" (in preparation), and shared with
-openwashdata as a workbook in October 2026.
+Council), measured from 1 to 3 October 2026, and shared with
+openwashdata as a workbook in October and November 2026. The fieldwork
+was funded by Integers Company Limited.
 
 ## Examples
 
