@@ -1,5 +1,7 @@
 # guluswm (development version)
 
+- The README introduction, the source paragraph and the package description describe the data only; the reference to the article follows once it is published.
+
 - `household_id` carries the enumerator code instead of the enumerator's initials (AC-2309-001 becomes E1-2309-001), at the authors' decision of 3 November 2026.
 
 - Tests review: R CMD check runs on every push and pull request to main and dev on five platforms; no change needed (#15).
