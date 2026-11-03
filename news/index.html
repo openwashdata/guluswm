@@ -613,7 +613,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">guluswm</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -644,16 +644,15 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="development version" id="guluswm-development-version">guluswm (development version)<a class="anchor" aria-label="anchor" href="#guluswm-development-version"></a></h2>
-<ul><li><p>The README introduction, the source paragraph and the package description describe the data only; the reference to the article follows once it is published.</p></li>
-<li><p><code>household_id</code> carries the enumerator code instead of the enumerator’s initials (AC-2309-001 becomes E1-2309-001), at the authors’ decision of 3 November 2026.</p></li>
-<li><p>Tests review: R CMD check runs on every push and pull request to main and dev on five platforms; no change needed (<a href="https://github.com/openwashdata/guluswm/issues/15" class="external-link">#15</a>).</p></li>
-<li><p>Documentation review: the README states how <code>household_id</code> is built, as the help page does (<a href="https://github.com/openwashdata/guluswm/issues/13" class="external-link">#13</a>).</p></li>
-<li><p>Data review: no change to the data. A data quality report (<code>analysis/data_quality.R</code>) counts missing values, duplicates, range and cross-field violations (none) and outliers; the household-level data are signed off for publication (<a href="https://github.com/openwashdata/guluswm/issues/11" class="external-link">#11</a>).</p></li>
-<li><p>Metadata review: the package description names all nine authors of the data and the University of Stuttgart, and the citation files are regenerated (<a href="https://github.com/openwashdata/guluswm/issues/9" class="external-link">#9</a>).</p></li>
-<li><p>The raw data are now the authors’ final copy of 3 November 2026, archived in <code>data-raw/</code>: coded enumerators, no coordinates, no free text, and the wealth index and survey weights as a third sheet. A corrected copy of the same day restores the before-deduction weights of inert fines and miscellaneous waste of the 30 October re-export (the first copy had rounded them, swapped them between CH-1002-021 and CH-1002-022 and left one blank); the net weights are unchanged. The tie rule of <code>wealth_index_class</code> is documented. Charles Wakhata (logistics, support to the enumeration and the waste characterisation) and the four enumerators are listed as authors of the data, between the article’s authors and its last author.</p></li>
-<li><p>Answers of the authors of 2 November 2026: the raw data are now their corrected re-export of 30 October 2026, in which sand and soil entered as miscellaneous waste in Limo and Vanguard are moved to inert fines (29 records; the per capita rate without inert fines changes in 49). The survey table gains <code>survey_weight</code>, <code>wealth_index_score</code> and <code>wealth_index_class</code> (46 variables). ORCID iDs, Charles Wakhata as contributor, the funding of the fieldwork and the confirmed variable descriptions are added. Coordinates, enumerator names and free text stay out at the authors’ decision.</p></li>
-<li><p>First build of the package from the authors’ field data workbook: two data objects, <code>guluswm_survey</code> (424 households, 43 variables) and <code>guluswm_waste</code> (95 households, 55 variables), a dictionary with drafted descriptions, and <code>analysis/validate_data.R</code>, which recomputes the figures of the draft manuscript from the data. Household coordinates, identifiers carrying enumerator names and the free text answers are not included pending the authors’ decision. Draft, not released.</p></li>
+<h2 class="pkg-version" data-toc-text="1.0.0" id="guluswm-100">guluswm 1.0.0<a class="anchor" aria-label="anchor" href="#guluswm-100"></a></h2>
+<p>Initial release.</p>
+<ul><li>Two data objects from the Gulu City household solid waste study: <code>guluswm_survey</code>, a household survey of 424 households (23 to 26 September 2026, 46 variables, with the survey weight by division and the wealth index score and class), and <code>guluswm_waste</code>, a seven day waste characterisation of 95 households (1 to 3 October 2026, 55 variables, with the weights of 16 fractions before and after the container deduction).</li>
+<li>The raw data are the authors’ corrected final copy of 3 November 2026, archived in <code>data-raw/</code>. At the authors’ decision, household coordinates, enumerator user names and free text answers are not published; enumerators appear as codes E1 to E5, also in <code>household_id</code>.</li>
+<li>The data dictionary carries the variable descriptions confirmed by the authors.</li>
+<li>
+<code>analysis/validate_data.R</code> recomputes summary figures of the study, and <code>analysis/data_quality.R</code> reports missing values, duplicates, range and cross-field checks and outliers.</li>
+<li>Everyone who contributed to the data is listed as an author: the study team, the four enumerators and Charles Wakhata (logistics and field support).</li>
+<li>Reviewed against the pkgreview standard 1.7.0 (<a href="https://github.com/openwashdata/guluswm/issues/9" class="external-link">#9</a>, <a href="https://github.com/openwashdata/guluswm/issues/11" class="external-link">#11</a>, <a href="https://github.com/openwashdata/guluswm/issues/13" class="external-link">#13</a>, <a href="https://github.com/openwashdata/guluswm/issues/15" class="external-link">#15</a>).</li>
 </ul></div>
   </main></div>
 
