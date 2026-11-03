@@ -1,5 +1,7 @@
 # guluswm (development version)
 
+- Tests review: R CMD check runs on every push and pull request to main and dev on five platforms; no change needed (#15).
+
 - Documentation review: the README says that `household_id` keeps the enumerator's initials, as the help page does (#13).
 
 - Data review: no change to the data. A data quality report (`analysis/data_quality.R`) counts missing values, duplicates, range and cross-field violations (none) and outliers; the household-level data are signed off for publication (#11).
