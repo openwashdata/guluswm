@@ -678,18 +678,19 @@
 
 <div id="guluswm" class="section level1">
 
-<p>R data package of the Gulu City household solid waste study (household survey and seven day waste characterisation, September and October 2026), built with washr 1.2.0 for openwashdata. Read this before changing anything.</p>
+<p>R data package of the Gulu City household solid waste study (household survey and seven day waste characterisation, September and October 2026), built with washr for openwashdata. Released as 1.0.0 on 3 November 2026 (DOI 10.5281/zenodo.23918126); the repository and the website (<a href="https://openwashdata.github.io/guluswm/" class="uri">https://openwashdata.github.io/guluswm/</a>) are public. dev carries the development version. Read this before changing anything.</p>
 <div class="section level2">
 <h2 id="raw-data-and-files-that-stay-out-of-git">Raw data and files that stay out of git<a class="anchor" aria-label="anchor" href="#raw-data-and-files-that-stay-out-of-git"></a></h2>
 <ul><li>
 <code>data-raw/Gulu_SWM_OpenWashData_final.xlsx</code> is the archived raw data: the authors’ corrected final copy of 3 November 2026 with coded enumerators (E1 to E5), no coordinates, no identifiers carrying names and no free text. Its third sheet holds the authors’ survey weight and wealth index. It is committed.</li>
 <li>Every earlier workbook of the authors (with coordinates, enumerator user names or free text) is git-ignored and lives in <code>dev/source/</code>. Never add one with <code>git add -f</code>.</li>
 <li>
-<code>dev/source/</code> holds the unpublished draft manuscript, its supplement, the first workbook and the authors’ replies of 2 and 3 November 2026 (<code>2026-11-02-author-response/</code>). Reference material only. Do not commit it, do not quote the manuscript’s results in files of this repository, in issues or in commit messages beyond what the README already says. The repository is private while the manuscript is unpublished. The revised manuscript is a Google Doc of the authors.</li>
+<code>dev/source/</code> holds the unpublished draft manuscript, its supplement, the first workbook and the authors’ replies of 2 and 3 November 2026 (<code>2026-11-02-author-response/</code>). Reference material only. Do not commit it, do not quote the manuscript’s results in files of this repository, in issues or in commit messages. The revised manuscript is a Google Doc of the authors.</li>
+<li>Package texts (README, DESCRIPTION Description, @source) describe the data only and do not mention the manuscript. Once the article is published, Ivan Feni sends its DOI; then add the article reference to the README, the Description, the @source blocks and the Zenodo record.</li>
 </ul></div>
 <div class="section level2">
 <h2 id="decisions-recorded-in-the-processing-script">Decisions recorded in the processing script<a class="anchor" aria-label="anchor" href="#decisions-recorded-in-the-processing-script"></a></h2>
-<ul><li>At the authors’ decision (2 November 2026, Q11 to Q13): no household coordinates (the consent did not cover locations), enumerators as codes (E1 to E5, alphabetical order of the user names, the same code in both tables), no free text answers.</li>
+<ul><li>At the authors’ decision (2 November 2026, Q11 to Q13): no household coordinates (the consent did not cover locations), enumerators as codes (E1 to E5, alphabetical order of the user names, the same code in both tables), no free text answers. At their decision of 3 November 2026 the household ID carries the enumerator code instead of the enumerator’s initials (E1-2309-001); the script re-keys it and checks the pattern.</li>
 <li>The script joins the authors’ survey weight, wealth index score and class (third sheet of the raw file) to the survey table. Ties of the score were ranked by file order, so the class cut splits one tied group.</li>
 <li>The survey sheet spells one area “Pabwo Quarters”; the package uses “Pabbo Quarters”, confirmed by the authors.</li>
 <li>Ordered categories (education, income and expenditure bands, income class, wealth index class, distance, fee and willingness to pay bands, fee rating) are factors with the questionnaire’s order. Multi-answer questions stay as one string with answers separated by a semicolon.</li>
@@ -705,8 +706,8 @@
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">document</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu">washr</span><span class="fu">::</span><span class="fu">update_metadata</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">build_readme</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><code>Rscript analysis/validate_data.R</code> recomputes the manuscript’s figures from the data objects and prints the checks the author questions rest on. <code>washr::check_publication_readiness()</code> and <code>devtools::check()</code> must stay clean.</p>
-<p>The pkgreview standards file (standard 1.7.0) was appended below when the review started on 3 November 2026. Every review step follows it.</p>
+<p><code>Rscript analysis/validate_data.R</code> recomputes summary figures of the study from the data objects and prints the checks the author questions rest on; <code>Rscript analysis/data_quality.R</code> reports missing values, duplicates, ranges and cross-field checks. <code>washr::check_publication_readiness()</code> and <code>devtools::check()</code> must stay clean.</p>
+<p>The pkgreview standards file (standard 1.7.0) was appended below when the review started on 3 November 2026 (issues #9, #11, #13, #15, final PR #17). At the next release, add <code>Config/washr/withheld</code> to DESCRIPTION (household coordinates and free text answers are not included, to protect the privacy of the respondents), so <code>washr::data_availability_statement()</code> writes that sentence. This file moves to <code>.claude/CLAUDE.md</code> in the fleet pass after washr 1.3.0 (openwashdata/pkgreview#102).</p>
 </div>
 </div>
 <div class="section level1">
