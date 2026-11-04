@@ -33,4 +33,4 @@ bibentry(bibtype = "Misc",
          url = "https://openwashdata.github.io/guluswm/",
          abstract = "Field data of a household solid waste study in Gulu City, northern Uganda, in September and October 2026: a socio-economic household survey of 424 households in six areas of the two city divisions, covering housing, income and expenditure bands, waste storage and disposal, the collection service, payment for collection and willingness to pay for an improved service, and a seven day waste characterisation of 95 households with the weights of 16 sorted fractions, the per capita generation rate and the bulk density.",
          keywords = "open data,washdata,solid waste management,household survey,waste characterisation,willingness to pay,Gulu,Uganda",
-         version = "1.0.0.9000")
+         version = "1.0.0")

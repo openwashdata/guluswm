@@ -1,6 +1,6 @@
 Package: guluswm
 Title: Household Waste Survey and Characterisation in Gulu City, Uganda
-Version: 1.0.0.9000
+Version: 1.0.0
 Authors@R: c(
     person("Ivan", "Feni", , "fenivan2@gmail.com", role = "aut",
            comment = c(ORCID = "0009-0003-2012-0421")),

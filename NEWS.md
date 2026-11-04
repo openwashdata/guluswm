@@ -1,5 +1,3 @@
-# guluswm (development version)
-
 # guluswm 1.0.0
 
 Initial release.
