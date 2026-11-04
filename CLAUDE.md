@@ -2,7 +2,10 @@
 
 R data package of the Gulu City household solid waste study (household
 survey and seven day waste characterisation, September and October 2026),
-built with washr 1.2.0 for openwashdata. Read this before changing anything.
+built with washr for openwashdata. Released as 1.0.0 on 3 November 2026
+(DOI 10.5281/zenodo.23918126); the repository and the website
+(https://openwashdata.github.io/guluswm/) are public. dev carries the
+development version. Read this before changing anything.
 
 ## Raw data and files that stay out of git
 
@@ -17,16 +20,21 @@ built with washr 1.2.0 for openwashdata. Read this before changing anything.
   the first workbook and the authors' replies of 2 and 3 November 2026
   (`2026-11-02-author-response/`). Reference material only. Do not commit
   it, do not quote the manuscript's results in files of this repository,
-  in issues or in commit messages beyond what the README already says. The
-  repository is private while the manuscript is unpublished. The revised
-  manuscript is a Google Doc of the authors.
+  in issues or in commit messages. The revised manuscript is a Google Doc
+  of the authors.
+- Package texts (README, DESCRIPTION Description, @source) describe the
+  data only and do not mention the manuscript. Once the article is
+  published, Ivan Feni sends its DOI; then add the article reference to the
+  README, the Description, the @source blocks and the Zenodo record.
 
 ## Decisions recorded in the processing script
 
 - At the authors' decision (2 November 2026, Q11 to Q13): no household
   coordinates (the consent did not cover locations), enumerators as codes
   (E1 to E5, alphabetical order of the user names, the same code in both
-  tables), no free text answers.
+  tables), no free text answers. At their decision of 3 November 2026 the
+  household ID carries the enumerator code instead of the enumerator's
+  initials (E1-2309-001); the script re-keys it and checks the pattern.
 - The script joins the authors' survey weight, wealth index score and
   class (third sheet of the raw file) to the survey table. Ties of the
   score were ranked by file order, so the class cut splits one tied group.
@@ -53,13 +61,20 @@ washr::update_metadata()
 devtools::build_readme()
 ```
 
-`Rscript analysis/validate_data.R` recomputes the manuscript's figures
-from the data objects and prints the checks the author questions rest on.
+`Rscript analysis/validate_data.R` recomputes summary figures of the study
+from the data objects and prints the checks the author questions rest on;
+`Rscript analysis/data_quality.R` reports missing values, duplicates,
+ranges and cross-field checks.
 `washr::check_publication_readiness()` and `devtools::check()` must stay
 clean.
 
 The pkgreview standards file (standard 1.7.0) was appended below when the
-review started on 3 November 2026. Every review step follows it.
+review started on 3 November 2026 (issues #9, #11, #13, #15, final PR #17).
+At the next release, add `Config/washr/withheld` to DESCRIPTION (household
+coordinates and free text answers are not included, to protect the privacy
+of the respondents), so `washr::data_availability_statement()` writes that
+sentence. This file moves to `.claude/CLAUDE.md` in the fleet pass after
+washr 1.3.0 (openwashdata/pkgreview#102).
 
 # --- pkgreview standards (from openwashdata/pkgreview) ---
 
